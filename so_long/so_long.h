@@ -6,7 +6,7 @@
 /*   By: esordone <esordone@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 12:22:03 by esordone          #+#    #+#             */
-/*   Updated: 2023/04/24 14:14:27 by esordone         ###   ########.fr       */
+/*   Updated: 2023/04/24 16:55:09 by esordone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,4 +31,19 @@ typedef struct	s_data {
 }				t_data;
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
+
+typedef struct s_game
+{
+	void			*mlx;
+	void			*window;
+	//t_vector		wndw_size;
+	//t_tile			**tilemap;
+	t_player		player;
+	//t_vector		img_size;
+	//t_wall_img		wall_imgs;
+	//t_collect_img	collects_imgs;
+}	t_game;
+
+void	game_init(t_game *game);
+
 #endif

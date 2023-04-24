@@ -6,7 +6,7 @@
 /*   By: esordone <esordone@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 12:19:01 by esordone          #+#    #+#             */
-/*   Updated: 2023/04/24 15:39:54 by esordone         ###   ########.fr       */
+/*   Updated: 2023/04/24 16:55:18 by esordone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 //
 //int offset = (y * line_length + x * (bits_per_pixel / 8));
 
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
+/*void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
 	char	*dst;
 
@@ -46,4 +46,16 @@ int main()
 	}
 	mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
 	mlx_loop(mlx);
+}*/
+
+void	game_init(t_game *game)
+{
+	game->mlx = mlx_init();
+	game->window = mlx_new_window(game->mlx,
+			game->wndw_size.x + IMG_SIZE / 2,
+			game->wndw_size.y,
+			"**** QUARANTAMAULA ****");
+	mlx_hook(game->window, 17, 0, end_program, game);
+	open_images(game);
 }
+
