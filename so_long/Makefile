@@ -6,7 +6,7 @@
 #    By: esordone <esordone@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/24 12:07:44 by esordone          #+#    #+#              #
-#    Updated: 2023/04/24 12:09:42 by esordone         ###   ########.fr        #
+#    Updated: 2023/04/24 13:48:44 by esordone         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,13 +24,15 @@ WHITE = \033[0;97m
 #-----------------------------------VARIABLES----------------------------------#
 NAME = so_long
 
-SRC = so_long.c\
+SRC = source/so_long.c\
 
 INCLUDE = so_long.h
 
 OBJ = $(SRC:.c=.o)
 
 LIBFT = libft
+
+MLX = mlx
 
 CC = gcc
 
@@ -40,31 +42,39 @@ CLEAN = rm -rf
 
 HEADER = libft.h
 
+GRAPHICHEADER = mlx.h
+
 #-------------------------------------RULES------------------------------------#
 %.o : %.c $(INCLUDE) Makefile
-	@$(CC) $(FLAGS) -c $< -o $@
+	@$(CC) $(FLAGS) -Imlx -c $< -o $@
 
-all: makelibft $(NAME)
+all: makelibft makemlx $(NAME)
 	@echo "$(GREEN)*SUCCESSFULL COMPILATION!* $(DEF_COLOR)"
 
 makelibft :
 	@$(MAKE) -C $(LIBFT) bonus
 	@echo "$(YELLOW)Libft compiled!$(DEF_COLOR)"
 
-$(NAME): $(OBJ) libft/libft.a
-	@$(CC) $(FLAGS) $(OBJ) libft/libft.a -o $(NAME)
+makemlx :
+	@$(MAKE) -C $(MLX)
+	@echo "$(WHITE)Mlx compiled!$(DEF_COLOR)"
+
+$(NAME): $(OBJ) libft/libft.a mlx
+	@$(CC) $(FLAGS) $(OBJ) -Lmlx -lmlx -framework OpenGL -framework AppKit libft/libft.a -o $(NAME)
 
 clean:
 	@$(CLEAN) $(OBJ)
 	@cd libft && make clean
+	@cd mlx && make clean
 	@echo "$(RED)Object files cleaned!$(DEF_COLOR)"
 
 fclean: clean
 	@$(CLEAN) $(NAME)
 	@cd libft && make fclean
+	@cd mlx && make clean
 	@echo "$(CYAN)Executables files cleaned!$(DEF_COLOR)"
 
 re: fclean all
 	@echo "$(GREEN)Everything has been remade!$(DEF_COLOR)"
 
-.PHONY: all makelibft clean fclean re
+.PHONY: all makelibft makemlx clean fclean re

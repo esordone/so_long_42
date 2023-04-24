@@ -17,6 +17,7 @@
 # include <string.h>
 # include <stdio.h>
 # include <limits.h>
+# include "./mlx/mlx.h"
 # include "./libft/libft.h"
 
 int so_long(int argc, char **argv);
