@@ -8,5 +8,5 @@ Repositorios de GitHub consultados:
 
 Páginas web:
 
-  Sobre la MinilibX
+  Sobre la MiniLibX
   - https://harm-smits.github.io/42docs/libs/minilibx
