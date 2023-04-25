@@ -20,7 +20,9 @@
 # include "./mlx/mlx.h"
 # include "./libft/libft.h"
 # include "./ft_printf/ft_printf.h"
+# include "./get_next_line/get_next_line.h"
 # define IMG_SIZE 32
+# define BUFFER_SIZE 5000
 
 //axis (eixos en angles)
 typedef struct  s_axis {
@@ -37,7 +39,7 @@ typedef struct  s_axis {
 typedef struct s_player {
 
     void    *img;
-    //void    *current_img;
+    void    *current_img;
     void    *action_img;
 }   t_player;
 
@@ -46,6 +48,7 @@ typedef struct s_game
 {
 	void			*mlx;
 	void			*window;
+    void            *size;
 	t_player		player;
 }	                t_game;
 

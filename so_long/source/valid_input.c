@@ -33,7 +33,6 @@ int	ft_strrncmp(char *s1, char *s2, int n)
 		len--;
 	}
 	if (s1[len] == s2[len2])
-
 		return (1);
 	else
 		return (0);

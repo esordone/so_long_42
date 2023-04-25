@@ -18,7 +18,7 @@ static void	open_player_img(t_game *game)
 
 	game->player.action_img = mlx_xpm_file_to_image(game->mlx,
 			"images/xpm/Maula1.xpm", &img_size, &img_size);
-	//game->player.current_img = game->player.action_img;
+	game->player.current_img = game->player.action_img;
 }
 
 void	open_images(t_game *game)

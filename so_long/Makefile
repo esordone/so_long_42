@@ -26,7 +26,9 @@ NAME = so_long
 
 SRC = source/so_long.c\
 	source/open_images.c\
-	source/valid_input.c
+	source/valid_input.c\
+	get_next_line/get_next_line.c\
+	get_next_line/get_next_line_utils.c
 
 INCLUDE = so_long.h
 
