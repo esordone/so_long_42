@@ -12,3 +12,5 @@ Páginas web:
 
   Sobre la MiniLibX
   - https://harm-smits.github.io/42docs/libs/minilibx
+  - https://pulgamecanica.herokuapp.com/posts/minilibx-tutorial
+  - https://pulgamecanica.herokuapp.com/posts/mlx-animations
