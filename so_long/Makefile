@@ -25,7 +25,8 @@ WHITE = \033[0;97m
 NAME = so_long
 
 SRC = source/so_long.c\
-	source/open_images.c
+	source/open_images.c\
+	source/valid_input.c
 
 INCLUDE = so_long.h
 
@@ -34,6 +35,8 @@ OBJ = $(SRC:.c=.o)
 LIBFT = libft
 
 MLX = mlx
+
+PRINT = ft_printf
 
 CC = gcc
 
@@ -45,37 +48,45 @@ HEADER = libft.h
 
 GRAPHICHEADER = mlx.h
 
+PRINTHEADER = ft_printf.h
+
 #-------------------------------------RULES------------------------------------#
 %.o : %.c $(INCLUDE) Makefile
 	@$(CC) $(FLAGS) -Imlx -c $< -o $@
 
-all: makelibft makemlx $(NAME)
+all: makelibft makemlx makeprint $(NAME)
 	@echo "$(GREEN)*SUCCESSFULL COMPILATION!* $(DEF_COLOR)"
 
-makelibft :
+makelibft:
 	@$(MAKE) -C $(LIBFT) bonus
 	@echo "$(YELLOW)Libft compiled!$(DEF_COLOR)"
 
-makemlx :
+makemlx:
 	@$(MAKE) -C $(MLX)
 	@echo "$(WHITE)Mlx compiled!$(DEF_COLOR)"
 
-$(NAME): $(OBJ) libft/libft.a mlx
-	@$(CC) $(FLAGS) $(OBJ) -Lmlx -lmlx -framework OpenGL -framework AppKit libft/libft.a -o $(NAME)
+makeprint:
+	@$(MAKE) -C $(PRINT)
+	@echo "$(MAGENTA)Ft_printf Compiled!$(DEF_COLOR)"
+
+$(NAME): $(OBJ) libft/libft.a mlx ft_printf/libftprintf.a
+	@$(CC) $(FLAGS) $(OBJ) -Lmlx -lmlx -framework OpenGL -framework AppKit ft_printf/libftprintf.a libft/libft.a -o $(NAME)
 
 clean:
 	@$(CLEAN) $(OBJ)
 	@cd libft && make clean
+	@cd ft_printf && make clean
 	@cd mlx && make clean
 	@echo "$(RED)Object files cleaned!$(DEF_COLOR)"
 
 fclean: clean
 	@$(CLEAN) $(NAME)
 	@cd libft && make fclean
-	@cd mlx && make clean
+	@cd ft_printf && make fclean
+	@cd mlx && make fclean
 	@echo "$(CYAN)Executables files cleaned!$(DEF_COLOR)"
 
 re: fclean all
 	@echo "$(GREEN)Everything has been remade!$(DEF_COLOR)"
 
-.PHONY: all makelibft makemlx clean fclean re
+.PHONY: all makelibft makemlx makeprint clean fclean re

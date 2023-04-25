@@ -61,17 +61,15 @@ $(NAME): $(OBJ)
 	@touch $@
 
 clean:
-	@$(RM) $(OBJ) $(OBJBONUS) 
+	@$(RM) $(OBJ) $(OBJBONUS)
 	@$(RMB)
-	@echo "$(GRAY)Object files libft cleaned!$(DEF_COLOR)"
 
-fclean: clean 
-	@$(RM) $(NAME) 
+fclean: clean
+	@$(RM) $(NAME)
 	@$(RMB)
-	@echo "$(GRAY)Executable files libft cleaned!$(DEF_COLOR)"
+	@echo "$(GRAY)Libft Files Cleaned!$(DEF_COLOR)"
 
 re: fclean all
-	 @echo "$(GRAY)Everything have been remake!$(DEF_COLOR)"
 
 rebonus: fclean bonus
 
