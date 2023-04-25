@@ -6,6 +6,7 @@ Repositorios de GitHub consultados:
 
 1. https://github.com/nach131/so_long
 2. https://github.com/S-LucasSerrano/so_long
+3. https://github.com/Develoi89/So_Long_42
 
 Páginas web:
 
