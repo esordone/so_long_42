@@ -36,7 +36,8 @@ int main(int argc, char **argv)
 
 	if (argc != 2 || ft_strrncmp(argv[1], ".ber", 4) == 0)
 	{
-		ft_printf("Error: Invalid Argument\n");
+		ft_printf("Error\n");
+		ft_printf("**** Invalid Argument ****\n");
 		return (0);
 	}
 	if (argc == 2)

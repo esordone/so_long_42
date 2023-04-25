@@ -23,15 +23,18 @@ int	ft_strrncmp(char *s1, char *s2, int n)
 	int len2;
 
 	len = ft_strlen(s1) - 1;
-	len2 = ft_strlen(s2) -1;
+	len2 = ft_strlen(s2) - 1;
 	if (n == 0)
 		return (0);
-	while (n > 0 && s1[len] == s2[len2])
+	while (n > 0 && s1[len] == s2[len2] && s2[len2] != s2[0])
 	{
 		n--;
 		len2--;
 		len--;
-		return (1);
 	}
-	return (0);
+	if (s1[len] == s2[len2])
+
+		return (1);
+	else
+		return (0);
 }
