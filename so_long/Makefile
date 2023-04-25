@@ -25,6 +25,7 @@ WHITE = \033[0;97m
 NAME = so_long
 
 SRC = source/so_long.c\
+	source/open_images.c
 
 INCLUDE = so_long.h
 

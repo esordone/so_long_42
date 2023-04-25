@@ -19,19 +19,37 @@
 # include <limits.h>
 # include "./mlx/mlx.h"
 # include "./libft/libft.h"
+# define IMG_SIZE 32
 
-int so_long(int argc, char **argv);
+//axis (eixos en angles)
+typedef struct  s_axis {
+    int x;
+    int y;
+}   t_axis;
 
+//square
+/*typedef struct s_square {
+
+}   t_square;*/
+
+//player
+typedef struct s_player {
+
+    void    *img;
+    //void    *current_img;
+    void    *action_img;
+}   t_player;
+
+//data
 typedef struct	s_data {
 	void	*img;
 	char	*addr;
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
-}				t_data;
+}			t_data;
 
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
-
+//game
 typedef struct s_game
 {
 	void			*mlx;
@@ -42,8 +60,11 @@ typedef struct s_game
 	//t_vector		img_size;
 	//t_wall_img		wall_imgs;
 	//t_collect_img	collects_imgs;
-}	t_game;
+}	                t_game;
 
+int     so_long(int argc, char **argv);
+void    open_images(t_game *game);
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void	game_init(t_game *game);
 
 #endif
