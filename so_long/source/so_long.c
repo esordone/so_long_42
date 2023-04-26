@@ -12,55 +12,38 @@
 
 #include "../so_long.h"
 
-int		num_lines(char *map)
+int		num_lines(char *map, int fd)
 {
 	int	i;
 	int	num_lines;
+	char	line;
 
 	i = 0;
+	line = '\n';
 	num_lines = 0;
-	while (map[i] != '\0')
+	while(map != NULL)
 	{
-		if (map[i] == '\n')
-			num_lines++;
-		i++;
+		map = get_next_line(fd);
+		num_lines++;
+		if (map != NULL)
+			free(map);
 	}
-	printf("mapa = %d\n", i);
-	printf("num_lines = %d\n", num_lines);
 	return (num_lines);
 }
 
-/*int main(int argc, char **argv)
-{
-	char *map;
-	int fd;
-
-	fd = open(argv[1], O_RDONLY);
-	map = get_next_line(fd);
-	if (!map)
-		free(map);
-	printf("num_lines = %d\n", num_lines(map));
-	if (argc != 2)
-		return (0);
-	return (0);
-}*/
-
 void	window(char **argv, t_game *size)
 {
-	//ancho
 	int		width;
 	int		fd;
 	char	*map;
-	//alto
 	int		high;
 
 	fd = open(argv[1], O_RDONLY);
-	//cal canviar el get_next line per el split
 	map = get_next_line(fd);
 	if (!map)
 		free(map);
 	width = ft_strlen(map) * IMG_SIZE;
-	high = num_lines(map) * IMG_SIZE;
+	high = num_lines(map, fd) * IMG_SIZE;
 	size->mlx = mlx_init();
 	size->window = mlx_new_window(size->mlx, width, high, "**** QUARANTAMAULA ****");
 	close(fd);
