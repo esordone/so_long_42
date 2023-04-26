@@ -24,20 +24,25 @@
 # define IMG_SIZE 32
 # define BUFFER_SIZE 5000
 
-//axis (eixos en angles)
-typedef struct  s_axis {
-    int x;
-    int y;
-}   t_axis;
-
 //square
 /*typedef struct s_square {
 
 }   t_square;*/
 
-//player
-typedef struct s_player {
+typedef struct s_map
+{
+    int wall;
+    int empty;
+    char start;
+    char exit;
+    char colect;
+    int x;
+    int y;
+}   t_map;
 
+//player
+typedef struct s_player
+{
     void    *img;
     void    *current_img;
     void    *action_img;
@@ -53,8 +58,10 @@ typedef struct s_game
 }	                t_game;
 
 int     so_long(int argc, char **argv);
+int		num_lines(char *map, int fd);
 void    open_images(t_game *game);
 void	game_init(t_game *game);
 int     ft_strrncmp(char *s1, char *s2, int n);
+int	walls_map(char **map, char *file);
 
 #endif
