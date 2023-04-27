@@ -12,38 +12,12 @@
 
 #include "../so_long.h"
 
-/*int	ft_strrncmp(char *s1, char *s2, int n)
+int	valid_input(char **argv, char *file)
 {
-	int	len;
-	int len2;
-
-	len = ft_strlen(s1) - 1;
-	len2 = ft_strlen(s2) - 1;
-	if (n == 0)
-		return (0);
-	while (n > 0 && s1[len] == s2[len2] && s2[len2] != s2[0])
+	if (walls_map(argv, file) != 1)
 	{
-		n--;
-		len2--;
-		len--;
-	}
-	if (s1[len] == s2[len2])
-		return (1);
-	else
+		ft_printf("The map is not closed\n");
 		return (0);
+	}
+	return (1);
 }
-
-char **read_map(char *map)
-{
-	int fd;
-	char *buffer;
-	char **res;
-
-	fd = open(map, O_RDONLY);
-	buffer = malloc(sizeof(char) * BUFFER_SIZE);
-	read(fd, buffer, BUFFER_SIZE);
-	res = ft_split(buffer, '\n');
-	free (buffer);
-	close (fd);
-	return (res);
-}*/

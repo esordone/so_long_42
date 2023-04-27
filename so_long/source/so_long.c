@@ -12,16 +12,16 @@
 
 #include "../so_long.h"
 
-int		num_lines(char *map, int fd)
+int	num_lines(char *map, int fd)
 {
-	int	i;
-	int	num_lines;
+	int		i;
+	int		num_lines;
 	char	line;
 
 	i = 0;
 	line = '\n';
 	num_lines = 1;
-	while(map != NULL)
+	while (map != NULL)
 	{
 		map = get_next_line(fd);
 		num_lines++;
@@ -45,7 +45,8 @@ void	window(char **argv, t_game *size)
 	width = ft_strlen(map) * IMG_SIZE;
 	high = num_lines(map, fd) * IMG_SIZE;
 	size->mlx = mlx_init();
-	size->window = mlx_new_window(size->mlx, width, high, "**** QUARANTAMAULA ****");
+	size->window = mlx_new_window(size->mlx, width,
+			high, "**** QUARANTAMAULA ****");
 	close(fd);
 }
 
@@ -53,13 +54,14 @@ void	game_init(t_game *game)
 {
 	//mlx_hook(game->window, 17, 0, game);
 	open_images(game);
-	mlx_put_image_to_window(game->mlx, game->window, game->player.current_img, 0, 0);
+	mlx_put_image_to_window(game->mlx, game->window,
+		game->player.current_img, 0, 0);
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	t_game	game;
-	int i;
+	int		i;
 
 	i = 0;
 	if (argc != 2 || ft_strrncmp(argv[1], ".ber", 4) == 0)
@@ -70,14 +72,12 @@ int main(int argc, char **argv)
 	}
 	if (argc == 2)
 	{
-		if (walls_map(argv, argv[1]) == 1)
-			printf("te parets\n");
-		else
-			printf("segueix somiant\n");
-		window(argv, &game);
-		game_init(&game);
-		mlx_loop(&game);
-
+		if (valid_input(argv, argv[1]) == 1)
+		{
+			window(argv, &game);
+			game_init(&game);
+			mlx_loop(&game);
+		}
 	}
 	return (0);
 }
