@@ -24,15 +24,10 @@
 # define IMG_SIZE 32
 # define BUFFER_SIZE 5000
 
-//square
-/*typedef struct s_square {
-
-}   t_square;*/
-
 typedef struct s_map
 {
-    int wall;
-    int empty;
+    char wall;
+    char empty;
     char start;
     char exit;
     char colect;
@@ -62,6 +57,7 @@ int		num_lines(char *map, int fd);
 void    open_images(t_game *game);
 void	game_init(t_game *game);
 int     ft_strrncmp(char *s1, char *s2, int n);
-int	walls_map(char **map, char *file);
+int	    walls_map(char **map, char *file);
+int		num_lines_split(char *map);
 
 #endif

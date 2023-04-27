@@ -20,7 +20,7 @@ int		num_lines(char *map, int fd)
 
 	i = 0;
 	line = '\n';
-	num_lines = 0;
+	num_lines = 1;
 	while(map != NULL)
 	{
 		map = get_next_line(fd);
@@ -72,7 +72,7 @@ int main(int argc, char **argv)
 	{
 		if (walls_map(argv, argv[1]) == 1)
 			printf("te parets\n");
-		if (walls_map(argv, argv[1]) != 1)
+		else
 			printf("segueix somiant\n");
 		window(argv, &game);
 		game_init(&game);
