@@ -62,6 +62,7 @@ int	valid_input(char **argv, char *file);
 
 //valid_input_utils
 int	    walls_map(char **map, char *file);
+int	rectangular_map(char **map, char *file);
 
 //valid_input_utils2
 int     ft_strrncmp(char *s1, char *s2, int n);

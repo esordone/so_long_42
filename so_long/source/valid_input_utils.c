@@ -41,6 +41,24 @@ int	walls_map(char **map, char *file)
 	return (1);
 }
 
+int	rectangular_map(char **map, char *file)
+{
+	t_map	data;
+	int		max_y;
+
+	init_struct(&data);
+	map = read_map(file);
+	if (!map)
+		return (0);
+	max_y = num_lines_split(file);
+	while (data.y < (max_y - 1))
+	{
+		if (ft_strlen(map[data.y]) != ft_strlen(map[data.y + 1]))
+			return (0);
+		data.y++;
+	}
+	return (1);
+}
 	/*printf("map[0][0] = %c\n", map[0][0]);
 	printf("map[1][0] = %c\n", map[1][0]);
 	printf("map[2][0] = %c\n", map[2][0]);

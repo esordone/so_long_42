@@ -61,9 +61,7 @@ void	game_init(t_game *game)
 int	main(int argc, char **argv)
 {
 	t_game	game;
-	int		i;
 
-	i = 0;
 	if (argc != 2 || ft_strrncmp(argv[1], ".ber", 4) == 0)
 	{
 		ft_printf("Error\n");

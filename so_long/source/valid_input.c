@@ -14,9 +14,9 @@
 
 int	valid_input(char **argv, char *file)
 {
-	if (walls_map(argv, file) != 1)
+	if ((walls_map(argv, file) != 1) || (rectangular_map(argv, file) != 1))
 	{
-		ft_printf("The map is not closed\n");
+		ft_printf("The map is not closed or is not a rectangle\n");
 		return (0);
 	}
 	return (1);
