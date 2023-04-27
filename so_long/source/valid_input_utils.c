@@ -59,15 +59,7 @@ int	rectangular_map(char **map, char *file)
 	}
 	return (1);
 }
+
+int	everything_on_map(char **map, char *file)
 	/*printf("map[0][0] = %c\n", map[0][0]);
-	printf("map[1][0] = %c\n", map[1][0]);
-	printf("map[2][0] = %c\n", map[2][0]);
-	printf("map[0][1] = %c\n", map[0][1]);
-	printf("map[1][1] = %c\n", map[1][1]);
-	printf("map[2][1] = %c\n", map[2][1]);
-	printf("map[0][2] = %c\n", map[0][2]);
-	printf("map[1][2] = %c\n", map[1][2]);
-	printf("map[2][2] = %c\n", map[2][2]);
-	printf("map[0][3] = %c\n", map[0][3]);
-	printf("map[1][3] = %c\n", map[1][3]);
-	printf("map[2][3] = %c\n", map[2][3]);*/
+	printf("map[1][0] = %c\n", map[1][0]);*/

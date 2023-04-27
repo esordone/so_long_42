@@ -52,6 +52,9 @@ void	init_struct(t_map *data)
 {
 	data->wall = '1';
 	data->empty = '0';
+	data->exit = 'E';
+	data->colect = 'C';
+	data->start = 'P';
 	data->x = 0;
 	data->y = 0;
 }
