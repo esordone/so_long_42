@@ -67,7 +67,7 @@ int		everything_on_map(char **map, char *file);
 
 //valid_input_utils2
 int		ft_strrncmp(char *s1, char *s2, int n);
-char	*read_map(char *map);
+char	**read_map(char *map);
 void	init_struct(t_map *data);
 int		num_lines_split(char *map);
 

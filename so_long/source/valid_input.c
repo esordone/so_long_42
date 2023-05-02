@@ -19,5 +19,10 @@ int	valid_input(char **argv, char *file)
 		ft_printf("The map is not closed or is not a rectangle\n");
 		return (0);
 	}
+	if ((everything_on_map(argv, file) != 1))
+	{
+		ft_printf("There is missing and object,the start or the exit\n");
+		return (0);
+	}
 	return (1);
 }

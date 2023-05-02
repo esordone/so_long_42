@@ -61,5 +61,28 @@ int	rectangular_map(char **map, char *file)
 }
 
 int	everything_on_map(char **map, char *file)
-	/*printf("map[0][0] = %c\n", map[0][0]);
-	printf("map[1][0] = %c\n", map[1][0]);*/
+{
+	t_map	data;
+	int		max_x;
+	int		max_y;
+
+	init_struct(&data);
+	map = read_map(file);
+	if (!map)
+		return (0);
+	max_x = ft_strlen(map[0]);
+	max_y = num_lines_split(file);
+	while (data.y <= (max_y - 1))
+	{
+		if (!ft_strchr(map[data.y], data.exit))
+			return (0);
+		printf("map[0][0] = %c\n", map[0][0]);
+		printf("map[1][0] = %c\n", map[1][0]);
+		data.y++;
+	}
+	return (1);
+}
+
+		//estas mirant si estan tots els parametres que et demanen
+		//en el mapa (objecte, sortida, entrada)
+		//vas deixar strchr com a posible forma de fer-ho
