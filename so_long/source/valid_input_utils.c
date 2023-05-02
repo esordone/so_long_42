@@ -72,12 +72,21 @@ int	everything_on_map(char **map, char *file)
 		return (0);
 	max_x = ft_strlen(map[0]);
 	max_y = num_lines_split(file);
-	while (data.y <= (max_y - 1))
+	printf("map[1][max.x -2] = %c\n", map[1][max_x - 2]);
+	printf("map[1][1] = %c\n", map[1][1]);
+	printf("map[max.y - 2][1] = %c\n", map[max_y - 2][1]);
+	printf("map[max.y - 2][max.x - 2] = %c\n", map[max_y - 2][max_x - 2]);
+	while ((data.y + 1) <= (max_y - 2))
 	{
-		if (!ft_strchr(map[data.y], data.exit))
-			return (0);
-		printf("map[0][0] = %c\n", map[0][0]);
-		printf("map[1][0] = %c\n", map[1][0]);
+		while ((data.x + 1) <= (max_x - 2))
+		{
+			printf("estas aci = %c\n", map[data.y + 1][data.x + 1]);
+			if (!ft_strchr(&map[data.y + 1][data.x + 1], data.exit))
+				return (0);
+			data.x++;
+		}
+		/*if (!ft_strchr(map[data.y], data.exit))
+			return (0);*/
 		data.y++;
 	}
 	return (1);
