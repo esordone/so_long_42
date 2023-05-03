@@ -29,6 +29,7 @@ SRC = source/so_long.c\
 	source/valid_input.c\
 	source/valid_input_utils.c\
 	source/valid_input_utils2.c\
+	source/valid_input_utils3.c\
 	get_next_line/get_next_line.c\
 	get_next_line/get_next_line_utils.c
 

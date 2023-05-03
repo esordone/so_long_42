@@ -19,9 +19,19 @@ int	valid_input(char **argv, char *file)
 		ft_printf("The map is not closed or is not a rectangle.\n");
 		return (0);
 	}
-	if ((everything_on_map(argv, file) != 1))
+	if ((exit_on_map(argv, file) != 1))
 	{
-		ft_printf("There is not object, start or exit in the map.\n");
+		ft_printf("There is no exit in the map.\n");
+		return (0);
+	}
+	if ((start_on_map(argv, file) != 1))
+	{
+		ft_printf("There is no starting position in the map.\n");
+		return (0);
+	}
+	if ((object_on_map(argv, file) != 1))
+	{
+		ft_printf("There are no collectibles on the map.\n");
 		return (0);
 	}
 	return (1);
