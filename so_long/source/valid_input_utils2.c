@@ -70,3 +70,17 @@ int	num_lines_split(char *map)
 		i++;
 	return (i);
 }
+
+int	is_in_map(char *map, char object, int len)
+{
+	int	i;
+
+	i = 1;
+	while (i < len && map[i] != '\0')
+	{
+		if (map[i] == object)
+			return (1);
+		i++;
+	}
+	return (0);
+}

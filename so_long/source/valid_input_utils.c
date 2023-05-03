@@ -78,20 +78,29 @@ int	everything_on_map(char **map, char *file)
 	printf("map[max.y - 2][max.x - 2] = %c\n", map[max_y - 2][max_x - 2]);
 	while ((data.y + 1) <= (max_y - 2))
 	{
+		printf("la y es = %s\n", map[data.y + 1]);
 		while ((data.x + 1) <= (max_x - 2))
 		{
-			printf("estas aci = %c\n", map[data.y + 1][data.x + 1]);
-			if (!ft_strchr(&map[data.y + 1][data.x + 1], data.exit))
-				return (0);
+			if (is_in_map(map[data.y + 1], data.exit, (max_x - 2))!= 1)
+			{
+				printf("***** = %c\n", map[data.y + 1][data.x + 1]);
+				data.y++;
+			}
 			data.x++;
 		}
-		/*if (!ft_strchr(map[data.y], data.exit))
-			return (0);*/
+		//data.y--;
+		data.x = 0;
+		printf("ubicada = %c\n", map[data.y + 1][data.x + 1]);
 		data.y++;
+	}
+	if (is_in_map(map[data.y + 1], data.exit, (max_x - 2))!= 1)
+	{
+		printf("***** = %c\n", map[data.y + 1][data.x + 1]);
+		return (0);
 	}
 	return (1);
 }
-
+		//printf("estas aci ara = %c\n", map[data.y + 1][data.x + 1]);
 		//estas mirant si estan tots els parametres que et demanen
 		//en el mapa (objecte, sortida, entrada)
 		//vas deixar strchr com a posible forma de fer-ho
