@@ -21,7 +21,7 @@ int	valid_input(char **argv, char *file)
 	}
 	if ((everything_on_map(argv, file) != 1))
 	{
-		ft_printf("There is not object,start or exit in the map.\n");
+		ft_printf("There is not object, start or exit in the map.\n");
 		return (0);
 	}
 	return (1);
