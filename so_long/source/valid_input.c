@@ -55,7 +55,7 @@ int	valid_double_input(char **map, char *file)
 	return (1);
 }
 
-/*int	valid_map(char **map, char *file)
+int	valid_map(char **map, char *file)
 {
 	t_map	data;
 	int		max_x;
@@ -67,27 +67,32 @@ int	valid_double_input(char **map, char *file)
 		return (0);
 	max_x = ft_strlen(map[0]);
 	max_y = num_lines_split(file);
-	while ((data.y + 1) <= (max_y - 1))
+	while ((data.y + 1) <= (max_y - 2))
 	{
-		while ((data.x + 1) <= (max_x - 2))
+		else
 		{
-			if ((map[data.y][data.x] != data.start) && (map[data.y][data.x] != data.exit ) &&
-				(map[data.y][data.x] != data.colect) && (map[data.y][data.x] != data.wall) &&
-				(map[data.y][data.x] != data.empty))
-			{
-				return (0);
-			}
-			data.x++;
+			ft_printf("Error\nUnexpected character found on the map\n");
+			return (0);
 		}
 		data.y++;
 	}
-}*/
+	return (1);
+}
+
+	//printf("/////// = %c\n", map[data.y + 1][data.x + 1]);
+	//printf("estas aci ara = %c\n", map[data.y + 1][data.x + 1]);
+	//printf("map[1][max.x -2] = %c\n", map[1][max_x - 2]);
+	//printf("map[1][1] = %c\n", map[1][1]);
+	//printf("map[max.y - 2][1] = %c\n", map[max_y - 2][1]);
+	//printf("map[max.y - 2][max.x - 2] = %c\n", map[max_y - 2][max_x - 2]);
 
 int	valid_input(char **argv, char *file)
 {
 	if (valid_input_map(argv, file) == 0)
 		return (0);
 	if (valid_double_input(argv, file) == 0)
+		return (0);
+	if (valid_map(argv, file) == 0)
 		return (0);
 	return (1);
 }

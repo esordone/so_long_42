@@ -81,12 +81,3 @@ int	object_on_map(char **map, char *file)
 	check_last_line_map(map, file, data.colect);
 	return (0);
 }
-	//printf("/////// = %c\n", map[data.y + 1][data.x + 1]);
-	//printf("estas aci ara = %c\n", map[data.y + 1][data.x + 1]);
-	//estas mirant si estan tots els parametres que et demanen
-	//en el mapa (objecte, sortida, entrada)
-	//vas deixar strchr com a posible forma de fer-ho
-	//printf("map[1][max.x -2] = %c\n", map[1][max_x - 2]);
-	//printf("map[1][1] = %c\n", map[1][1]);
-	//printf("map[max.y - 2][1] = %c\n", map[max_y - 2][1]);
-	//printf("map[max.y - 2][max.x - 2] = %c\n", map[max_y - 2][max_x - 2]);
