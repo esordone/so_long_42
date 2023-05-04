@@ -37,23 +37,23 @@ int	valid_input_map(char **argv, char *file)
 	return (1);
 }
 
-/*int	valid_double_input(char **map, char *file)
+int	valid_double_input(char **map, char *file)
 {
 	t_map	data;
 
 	init_struct(&data);
 	if(check_doubles(map,file, data.start) != 1)
 	{
-		ft_printf("There are more than one starting position in the map.\n");
+		ft_printf("Error\nThere are more than one starting position in the map.\n");
 		return (0);
 	}
 	if(check_doubles(map,file, data.exit) != 1)
 	{
-		ft_printf("There are more than one exit in the map.\n");
+		ft_printf("Error\nThere are more than one exit in the map.\n");
 		return (0);
 	}
 	return (1);
-}*/
+}
 
 int	valid_input(char **argv, char *file)
 {
@@ -62,10 +62,7 @@ int	valid_input(char **argv, char *file)
 	init_struct(&data);
 	if (valid_input_map(argv, file) == 0)
 		return (0);
-	/*if (valid_double_input(argv, file) == 0)
-	{
-		ft_printf("Error\n");
+	if (valid_double_input(argv, file) == 0)
 		return (0);
-	}*/
 	return (1);
 }

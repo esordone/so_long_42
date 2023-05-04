@@ -28,6 +28,33 @@ int	is_double_in_map(char *map, char object, int len)
 	return (check);
 }
 
+int	check_doubles(char **map, char *file, char object)
+{
+	t_map	data;
+	int		max_x;
+	int		max_y;
+	int 	check;
+
+	init_struct(&data);
+	map = read_map(file);
+	if (!map)
+		return (0);
+	max_x = ft_strlen(map[0]);
+	max_y = num_lines_split(file);
+	check = 0;
+	while ((data.y + 1) <= (max_y - 1))
+	{
+		if (is_double_in_map(map[data.y + 1], object, (max_x - 1)) > 1)
+			return (0);
+		else if (is_double_in_map(map[data.y + 1], object, (max_x - 1)) == 1)
+			check++;
+		data.y++;
+	}
+	if (check == 1)
+		return (1);
+	return (0);
+}
+
 int	object_on_map(char **map, char *file)
 {
 	t_map	data;
@@ -54,16 +81,12 @@ int	object_on_map(char **map, char *file)
 	check_last_line_map(map, file, data.colect);
 	return (0);
 }
-
-
-
-
-		//printf("/////// = %c\n", map[data.y + 1][data.x + 1]);
-		//printf("estas aci ara = %c\n", map[data.y + 1][data.x + 1]);
-		//estas mirant si estan tots els parametres que et demanen
-		//en el mapa (objecte, sortida, entrada)
-		//vas deixar strchr com a posible forma de fer-ho
-		//printf("map[1][max.x -2] = %c\n", map[1][max_x - 2]);
-		//printf("map[1][1] = %c\n", map[1][1]);
-		//printf("map[max.y - 2][1] = %c\n", map[max_y - 2][1]);
-		//printf("map[max.y - 2][max.x - 2] = %c\n", map[max_y - 2][max_x - 2]);
+	//printf("/////// = %c\n", map[data.y + 1][data.x + 1]);
+	//printf("estas aci ara = %c\n", map[data.y + 1][data.x + 1]);
+	//estas mirant si estan tots els parametres que et demanen
+	//en el mapa (objecte, sortida, entrada)
+	//vas deixar strchr com a posible forma de fer-ho
+	//printf("map[1][max.x -2] = %c\n", map[1][max_x - 2]);
+	//printf("map[1][1] = %c\n", map[1][1]);
+	//printf("map[max.y - 2][1] = %c\n", map[max_y - 2][1]);
+	//printf("map[max.y - 2][max.x - 2] = %c\n", map[max_y - 2][max_x - 2]);
