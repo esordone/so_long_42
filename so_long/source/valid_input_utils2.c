@@ -40,6 +40,11 @@ char	**read_map(char *map)
 	char	**res;
 
 	fd = open(map, O_RDONLY);
+	if (fd < 0)
+	{
+		ft_printf("Error\nThe map does not exist.\n");
+		exit (0);
+	}
 	buffer = ft_calloc(sizeof(char), BUFFER_SIZE);
 	read(fd, buffer, BUFFER_SIZE);
 	res = ft_split(buffer, '\n');

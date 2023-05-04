@@ -55,11 +55,36 @@ int	valid_double_input(char **map, char *file)
 	return (1);
 }
 
-int	valid_input(char **argv, char *file)
+/*int	valid_map(char **map, char *file)
 {
 	t_map	data;
+	int		max_x;
+	int		max_y;
 
 	init_struct(&data);
+	map = read_map(file);
+	if (!map)
+		return (0);
+	max_x = ft_strlen(map[0]);
+	max_y = num_lines_split(file);
+	while ((data.y + 1) <= (max_y - 1))
+	{
+		while ((data.x + 1) <= (max_x - 2))
+		{
+			if ((map[data.y][data.x] != data.start) && (map[data.y][data.x] != data.exit ) &&
+				(map[data.y][data.x] != data.colect) && (map[data.y][data.x] != data.wall) &&
+				(map[data.y][data.x] != data.empty))
+			{
+				return (0);
+			}
+			data.x++;
+		}
+		data.y++;
+	}
+}*/
+
+int	valid_input(char **argv, char *file)
+{
 	if (valid_input_map(argv, file) == 0)
 		return (0);
 	if (valid_double_input(argv, file) == 0)

@@ -76,7 +76,6 @@ int 	is_in_map(char *map, char object, int len);
 
 //valid_input_utils3
 int	object_on_map(char **map, char *file);
-//int	check_doubles_last_line_map(char **map, char *file, char object);
 int	is_double_in_map(char *map, char object, int len);
 int	check_doubles(char **map, char *file, char object);
 
