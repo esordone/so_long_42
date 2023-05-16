@@ -15,23 +15,22 @@
 int	valid_map(char **map, char *file)
 {
 	t_map	data;
-	int		max_x;
 	int		max_y;
 
 	init_struct(&data);
 	map = read_map(file);
 	if (!map)
 		return (0);
-	max_x = ft_strlen(map[0]);
 	max_y = num_lines_split(file);
 	while ((data.y + 1) <= (max_y - 2))
 	{
-		while ((data.x + 1) <= (max_x - 2))
+		while ((data.x + 1) <= ((int)ft_strlen(map[0]) - 2))
 		{
 			if (map[data.y + 1][data.x + 1] != data.empty
 				&& map[data.y + 1][data.x + 1] != data.colect &&
 				map[data.y + 1][data.x + 1] != data.start &&
-				map[data.y + 1][data.x + 1] != data.exit)
+				map[data.y + 1][data.x + 1] != data.exit &&
+				map[data.y + 1][data.x + 1] != data.wall)
 				return (0);
 			data.x++;
 		}

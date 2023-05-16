@@ -57,7 +57,6 @@ void	window(char **argv, t_game *size)
 
 void	game_init(t_game *game)
 {
-	//mlx_hook(game->window, 17, 0, game);
 	open_images(game);
 	mlx_put_image_to_window(game->mlx, game->window,
 		game->player.current_img, 0, 0);
