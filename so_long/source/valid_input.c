@@ -12,6 +12,35 @@
 
 #include "../so_long.h"
 
+int	valid_map(char **map, char *file)
+{
+	t_map	data;
+	int		max_x;
+	int		max_y;
+
+	init_struct(&data);
+	map = read_map(file);
+	if (!map)
+		return (0);
+	max_x = ft_strlen(map[0]);
+	max_y = num_lines_split(file);
+	while ((data.y + 1) <= (max_y - 2))
+	{
+		while ((data.x + 1) <= (max_x - 2))
+		{
+			if (map[data.y + 1][data.x + 1] != data.empty
+				&& map[data.y + 1][data.x + 1] != data.colect &&
+				map[data.y + 1][data.x + 1] != data.start &&
+				map[data.y + 1][data.x + 1] != data.exit)
+				return (0);
+			data.x++;
+		}
+		data.x = 0;
+		data.y++;
+	}
+	return (1);
+}
+
 int	valid_input_map(char **argv, char *file)
 {
 	if ((walls_map(argv, file) != 1) || (rectangular_map(argv, file) != 1))
@@ -42,49 +71,23 @@ int	valid_double_input(char **map, char *file)
 	t_map	data;
 
 	init_struct(&data);
-	if(check_doubles(map,file, data.start) != 1)
+	if (check_doubles(map, file, data.start) != 1)
 	{
-		ft_printf("Error\nThere are more than one starting position in the map.\n");
+		ft_printf("Error\nThere are more than one start in the map.\n");
 		return (0);
 	}
-	if(check_doubles(map,file, data.exit) != 1)
+	if (check_doubles(map, file, data.exit) != 1)
 	{
 		ft_printf("Error\nThere are more than one exit in the map.\n");
 		return (0);
 	}
-	return (1);
-}
-
-int	valid_map(char **map, char *file)
-{
-	t_map	data;
-	int		max_x;
-	int		max_y;
-
-	init_struct(&data);
-	map = read_map(file);
-	if (!map)
-		return (0);
-	max_x = ft_strlen(map[0]);
-	max_y = num_lines_split(file);
-	while ((data.y + 1) <= (max_y - 2))
+	if (valid_map(map, file) != 1)
 	{
-		else
-		{
-			ft_printf("Error\nUnexpected character found on the map\n");
-			return (0);
-		}
-		data.y++;
+		ft_printf("Error\nUnexpected character found on the map\n");
+		return (0);
 	}
 	return (1);
 }
-
-	//printf("/////// = %c\n", map[data.y + 1][data.x + 1]);
-	//printf("estas aci ara = %c\n", map[data.y + 1][data.x + 1]);
-	//printf("map[1][max.x -2] = %c\n", map[1][max_x - 2]);
-	//printf("map[1][1] = %c\n", map[1][1]);
-	//printf("map[max.y - 2][1] = %c\n", map[max_y - 2][1]);
-	//printf("map[max.y - 2][max.x - 2] = %c\n", map[max_y - 2][max_x - 2]);
 
 int	valid_input(char **argv, char *file)
 {

@@ -33,7 +33,7 @@ int	check_doubles(char **map, char *file, char object)
 	t_map	data;
 	int		max_x;
 	int		max_y;
-	int 	check;
+	int		check;
 
 	init_struct(&data);
 	map = read_map(file);
