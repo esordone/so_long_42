@@ -57,6 +57,9 @@ int		num_lines(char *map, int fd);
 void	open_images(t_game *game);
 void	game_init(t_game *game);
 
+//mlx
+int	finish_program ();
+
 //valid_input
 int		valid_input(char **argv, char *file);
 

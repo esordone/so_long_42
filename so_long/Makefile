@@ -26,6 +26,7 @@ NAME = so_long
 
 SRC = source/so_long.c\
 	source/open_images.c\
+	source/ft_utils.c \
 	source/valid_input.c\
 	source/valid_input_utils.c\
 	source/valid_input_utils2.c\

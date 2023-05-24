@@ -78,6 +78,7 @@ int	main(int argc, char **argv)
 		{
 			window(argv, &game);
 			game_init(&game);
+			mlx_hook(game.window, 17, 0,finish_program, &game);
 			mlx_loop(&game);
 		}
 	}
