@@ -23,6 +23,9 @@
 # include "./get_next_line/get_next_line.h"
 # define IMG_SIZE 32
 # define BUFFER_SIZE 5000
+# define ESC 53
+# define UP 126
+# define DOWN 125
 
 typedef struct s_map
 {
@@ -58,7 +61,8 @@ void	open_images(t_game *game);
 void	game_init(t_game *game);
 
 //mlx
-int	finish_program ();
+int	finish_program (t_game *game);
+int read_keys(int exit_key, void *data);
 
 //valid_input
 int		valid_input(char **argv, char *file);
