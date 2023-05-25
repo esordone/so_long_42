@@ -24,8 +24,14 @@
 # define IMG_SIZE 32
 # define BUFFER_SIZE 5000
 # define ESC 53
-# define UP 126
-# define DOWN 125
+# define KEY_LEFT 123
+# define KEY_RIGHT 124
+# define KEY_DOWN 125
+# define KEY_UP 126
+# define KEY_A 0
+# define KEY_D 2
+# define KEY_S 1
+# define KEY_W 13
 
 typedef struct s_map
 {
@@ -52,6 +58,7 @@ typedef struct s_game
 	void			*mlx;
 	void			*window;
 	void			*size;
+    char            **mapa;
 	t_player		player;
 }					t_game;
 
@@ -59,6 +66,7 @@ int		so_long(int argc, char **argv);
 int		num_lines(char *map, int fd);
 void	open_images(t_game *game);
 void	game_init(t_game *game);
+void	*put_images(t_game *game, int x, int y);
 
 //mlx
 int	finish_program (t_game *game);

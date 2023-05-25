@@ -30,11 +30,11 @@ int read_keys(int exit_key, void *data)
 	return (0);
 }
 
-/*int	move_it(int exit_key)
+/*int	move_things(int key)
 {
-	if (exit_key == 53)
+	if (key == 53)
 		finish_program();
 	//else
-		//lets_move(keycap, sizes);
+		//move(key, sizes);
 	return (0);
 }*/

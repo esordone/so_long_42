@@ -55,11 +55,20 @@ void	window(char **argv, t_game *size)
 	close(fd);
 }
 
-void	game_init(t_game *game)
+void	*put_images(t_game *game, int x, int y)
 {
-	open_images(game);
-	mlx_put_image_to_window(game->mlx, game->window,
-		game->player.current_img, 0, 0);
+	if (game->mapa[data.x][data.y] == '1')
+		return (showing(game, "images/xpm/Wall.xpm"));
+	else if (game->mapa[data.x][data.y] == '0')
+		return (showing(game, "images/xpm/Fons.xpm"));
+	else if (game->mapa[data.x][data.y] == 'C')
+		return (showing(game, "images/xpm/Colectionable.xpm"));
+	else if (game->mapa[data.x][data.y] == 'E')
+		return (showing(game, "images/xpm/Exit.xpm"));
+	else if (sgame->mapa[data.x][data.y] == 'P')
+		return (showing(game, "images/xpm/Maula1.xpm"));
+	else
+		return (0);
 }
 
 int	main(int argc, char **argv)

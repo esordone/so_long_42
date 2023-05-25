@@ -25,3 +25,10 @@ void	open_images(t_game *game)
 {
 	open_player_img(game);
 }
+
+void	game_init(t_game *game)
+{
+	open_images(game);
+	mlx_put_image_to_window(game->mlx, game->window,
+		game->player.current_img, 0, 0);
+}
