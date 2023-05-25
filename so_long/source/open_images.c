@@ -41,6 +41,42 @@ void	init_sprites(t_game *game)
 		ft_printf("ERROR\nCould not open images");
 }
 
+void	game_init(t_game *game, char **map, char *file)
+{
+	t_map	data;
+	t_player sprit;
+
+	init_struct(&data);
+	init_player_struct(game, &sprit, map, file);
+	init_sprites(game);
+	while (data.y < game->sprites->max_y - 1)
+	{
+		while (data.x < game->sprites->max_x - 1)
+		{
+
+			mlx_put_image_to_window(game->mlx, game->window, game->sprites->roof, \
+				data.x * 32, data.y * 32);
+			printf("aci \n");
+			if (map[data.y][data.x] == '1')
+			{
+				mlx_put_image_to_window(game->mlx, game->window, \
+				game->sprites->walls, data.x * 32, data.y * 32);
+			}
+			else if (map[data.y][data.x] == 'C')
+				mlx_put_image_to_window(game->mlx, game->window, \
+				game->sprites->coll, data.x * 32, data.y * 32);
+			else if (map[data.y][data.x] == 'P')
+				mlx_put_image_to_window(game->mlx, game->window, \
+				game->sprites->maula, data.x * 32, data.y * 32);
+			else if (map[data.y][data.x] == 'E')
+				mlx_put_image_to_window(game->mlx, game->window, \
+				game->sprites->exit, data.x * 32, data.y * 32);
+			data.x++;
+		}
+		data.y++;
+	}
+}
+
 /*void	open_images(t_game *game)
 {
 	open_player_img(game);
@@ -52,34 +88,3 @@ void	game_init(t_game *game)
 	mlx_put_image_to_window(game->mlx, game->window,
 		game->player.current_img, 0, 0);
 }*/
-
-void	game_init(t_game *game, char **map, char *file)
-{
-	t_map	data;
-	int		max_x;
-	int		max_y;
-
-	init_struct(&data);
-	map = read_map(file);
-	if (!map)
-		return ;
-	max_x = ft_strlen(map[0]);
-	max_y = num_lines_split(file);
-	while (data.y < max_y)
-	{
-		while (data.x < max_x)
-		{
-			//mlx_put_image_to_window(game->mlx, game->window, game->, data.x * 32, data.y * 32);
-			if (game->mapa[data.y][data.x] == '1')
-				mlx_put_image_to_window(game->mlx, game->window, game->player->walls, data.x * 32, data.y * 32);
-			else if (game->mapa[data.y][data.x] == 'C')
-				mlx_put_image_to_window(game->mlx, game->window, game->player->coll, data.x * 32, data.y * 32);
-			else if (game->mapa[data.y][data.x] == 'P')
-				mlx_put_image_to_window(game->mlx, game->window, game->player->maula, data.x * 32, data.y * 32);
-			else if (game->mapa[data.y][data.x] == 'E')
-				mlx_put_image_to_window(game->mlx, game->window, game->player->exit, data.x * 32, data.y * 32);
-			data.x++;
-		}
-		data.y++;
-	}
-}

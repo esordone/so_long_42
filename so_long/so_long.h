@@ -54,6 +54,8 @@ typedef struct s_player
     void    *coll;
     void    *exit;
     void    *roof;
+    int max_x;
+    int max_y;
 	//void	*current_img;
 	//void	*action_img;
 }	t_player;
@@ -64,8 +66,8 @@ typedef struct s_game
 	void			*mlx;
 	void			*window;
 	void			*size;
-    char            **mapa;
-	t_player		*player;
+    char            **map;
+	//t_player		*player;
     t_player       *sprites;
 }					t_game;
 
@@ -74,6 +76,12 @@ int		num_lines(char *map, int fd);
 void	open_images(t_game *game);
 //void	game_init(t_game *game);
 void	*put_images(t_game *game, int x, int y);
+
+
+//utils
+void init_player_struct(t_game *game, t_player *sprit, char **map, char *file);
+int	finish_program (t_game *game);
+int read_keys(int exit_key, void *data);
 
 //mlx
 int	finish_program (t_game *game);

@@ -30,6 +30,21 @@ int read_keys(int exit_key, void *data)
 	return (0);
 }
 
+void init_player_struct(t_game *game, t_player *sprit, char **map, char *file)
+{
+	sprit->maula = NULL;
+	sprit->roof = NULL;
+	sprit->walls = NULL;
+	sprit->coll = NULL;
+	sprit->exit = NULL;
+	map = read_map(file);
+	if (!map)
+		return ;
+	sprit->max_x = ft_strlen(map[0]);
+	sprit->max_y = num_lines_split(file);
+	game->sprites = sprit;
+}
+
 /*int	move_things(int key)
 {
 	if (key == 53)

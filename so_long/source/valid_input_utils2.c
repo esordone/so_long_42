@@ -53,7 +53,7 @@ char	**read_map(char *map)
 	return (res);
 }
 
-void	init_struct(t_map *data, t_player *sprites)
+void	init_struct(t_map *data)
 {
 	data->wall = '1';
 	data->empty = '0';
@@ -62,7 +62,7 @@ void	init_struct(t_map *data, t_player *sprites)
 	data->start = 'P';
 	data->x = 0;
 	data->y = 0;
-	
+
 }
 
 int	num_lines_split(char *map)
