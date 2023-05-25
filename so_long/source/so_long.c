@@ -55,22 +55,6 @@ void	window(char **argv, t_game *size)
 	close(fd);
 }
 
-void	*put_images(t_game *game, int x, int y)
-{
-	if (game->mapa[data.x][data.y] == '1')
-		return (showing(game, "images/xpm/Wall.xpm"));
-	else if (game->mapa[data.x][data.y] == '0')
-		return (showing(game, "images/xpm/Fons.xpm"));
-	else if (game->mapa[data.x][data.y] == 'C')
-		return (showing(game, "images/xpm/Colectionable.xpm"));
-	else if (game->mapa[data.x][data.y] == 'E')
-		return (showing(game, "images/xpm/Exit.xpm"));
-	else if (sgame->mapa[data.x][data.y] == 'P')
-		return (showing(game, "images/xpm/Maula1.xpm"));
-	else
-		return (0);
-}
-
 int	main(int argc, char **argv)
 {
 	t_game	game;
@@ -86,7 +70,8 @@ int	main(int argc, char **argv)
 		if (valid_input(argv, argv[1]) == 1)
 		{
 			window(argv, &game);
-			game_init(&game);
+			//game_init(&game);
+			game_init(&game, argv, argv[1]);
 			//mlx_hook(sizes.wndw, 2, 0, move_things, &sizes);
 			mlx_key_hook (game.window, read_keys, &game);
 			mlx_hook(game.window, 17, 0, finish_program, &game);

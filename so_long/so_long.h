@@ -47,9 +47,15 @@ typedef struct s_map
 //player
 typedef struct s_player
 {
-	void	*img;
-	void	*current_img;
-	void	*action_img;
+	//void	*img;
+
+    void    *maula;
+    void    *walls;
+    void    *coll;
+    void    *exit;
+    void    *roof;
+	//void	*current_img;
+	//void	*action_img;
 }	t_player;
 
 //game
@@ -59,13 +65,14 @@ typedef struct s_game
 	void			*window;
 	void			*size;
     char            **mapa;
-	t_player		player;
+	t_player		*player;
+    t_player       *sprites;
 }					t_game;
 
 int		so_long(int argc, char **argv);
 int		num_lines(char *map, int fd);
 void	open_images(t_game *game);
-void	game_init(t_game *game);
+//void	game_init(t_game *game);
 void	*put_images(t_game *game, int x, int y);
 
 //mlx
@@ -74,6 +81,10 @@ int read_keys(int exit_key, void *data);
 
 //valid_input
 int		valid_input(char **argv, char *file);
+
+//open images
+void	game_init(t_game *game, char **map, char *file);
+void	init_sprites(t_game *game);
 
 //valid_input_utils
 int		walls_map(char **map, char *file);
