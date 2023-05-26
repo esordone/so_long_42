@@ -21,7 +21,7 @@
 # include "./libft/libft.h"
 # include "./ft_printf/ft_printf.h"
 # include "./get_next_line/get_next_line.h"
-# define IMG_SIZE 32
+# define IMG_SIZE 64
 # define BUFFER_SIZE 5000
 # define ESC 53
 # define KEY_LEFT 123
