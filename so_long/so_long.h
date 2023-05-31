@@ -79,6 +79,7 @@ void	*put_images(t_game *game, int x, int y);
 void init_player_struct(t_game *game, t_player *sprit, char **map, char *file);
 int	finish_program (t_game *game);
 int read_keys(int exit_key, void *data);
+int	move_things(int key, t_game *game);
 
 //mlx
 int	finish_program (t_game *game);

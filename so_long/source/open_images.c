@@ -6,7 +6,7 @@
 /*   By: esordone <esordone@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 10:29:20 by esordone          #+#    #+#             */
-/*   Updated: 2023/04/25 10:32:48 by esordone         ###   ########.fr       */
+/*   Updated: 2023/05/31 17:58:39 by esordone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	init_sprites(t_game *game)
 
 void	clear_sprites(t_game *game)
 {
-	//init_sprites(game);
+	init_sprites(game);
 	while (game->sprites->maula)
 		mlx_destroy_image(game->mlx, game->sprites->maula);
 	while (game->sprites->walls)
@@ -49,6 +49,8 @@ void	clear_sprites(t_game *game)
 
 void	*swap_images(int x, int y, t_game *game)
 {
+	if (x == y)
+		printf("jejjejejeej\n");
 	clear_sprites(game);
 	mlx_clear_window(game->mlx, game->window);
 	return (0);
@@ -57,7 +59,7 @@ void	*swap_images(int x, int y, t_game *game)
 int	ft_move(int key, t_game *game)
 {
 	if ((key == KEY_A || key == KEY_LEFT) &&
-		(game->map[game->check_x][game->check_y - 1] != '1'))
+		(game->map[game->sprites->check_x][game->sprites->check_y - 1] != '1'))
 		swap_images(0, -1, game);
 	return (0);
 }

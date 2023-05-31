@@ -48,11 +48,11 @@ void init_player_struct(t_game *game, t_player *sprit, char **map, char *file)
 	game->sprites = sprit;
 }
 
-/*int	move_things(int key)
+int	move_things(int key, t_game *game)
 {
 	if (key == 53)
-		finish_program();
-	//else
-		//move(key, sizes);
+		finish_program(game);
+	else
+		ft_move(key, game);
 	return (0);
-}*/
+}
