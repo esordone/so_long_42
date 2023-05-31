@@ -37,6 +37,9 @@ void init_player_struct(t_game *game, t_player *sprit, char **map, char *file)
 	sprit->walls = NULL;
 	sprit->coll = NULL;
 	sprit->exit = NULL;
+	sprit->moves = 0;
+	sprit->check_x = 0;
+	sprit->check_y = 0;
 	map = read_map(file);
 	if (!map)
 		return ;

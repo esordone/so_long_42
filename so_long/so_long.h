@@ -21,7 +21,7 @@
 # include "./libft/libft.h"
 # include "./ft_printf/ft_printf.h"
 # include "./get_next_line/get_next_line.h"
-# define IMG_SIZE 64
+# define IMG_SIZE 50
 # define BUFFER_SIZE 5000
 # define ESC 53
 # define KEY_LEFT 123
@@ -47,8 +47,6 @@ typedef struct s_map
 //player
 typedef struct s_player
 {
-	//void	*img;
-
     void    *maula;
     void    *walls;
     void    *coll;
@@ -56,8 +54,9 @@ typedef struct s_player
     void    *roof;
     int max_x;
     int max_y;
-	//void	*current_img;
-	//void	*action_img;
+    int     check_x;
+    int     check_y;
+    int moves;
 }	t_player;
 
 //game
@@ -67,14 +66,12 @@ typedef struct s_game
 	void			*window;
 	void			*size;
     char            **map;
-	//t_player		*player;
     t_player       *sprites;
 }					t_game;
 
 int		so_long(int argc, char **argv);
 int		num_lines(char *map, int fd);
 void	open_images(t_game *game);
-//void	game_init(t_game *game);
 void	*put_images(t_game *game, int x, int y);
 
 
@@ -86,6 +83,9 @@ int read_keys(int exit_key, void *data);
 //mlx
 int	finish_program (t_game *game);
 int read_keys(int exit_key, void *data);
+void	clear_sprites(t_game *game);
+int	ft_move(int key, t_game *game);
+void	*swap_images(int x, int y, t_game *game);
 
 //valid_input
 int		valid_input(char **argv, char *file);
