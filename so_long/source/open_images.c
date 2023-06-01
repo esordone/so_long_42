@@ -53,21 +53,22 @@ void	*swap_images(int x, int y, t_game *game)
 		printf("jejjejejeej\n");
 	clear_sprites(game);
 	mlx_clear_window(game->mlx, game->window);
+	ft_printf("moves:%d\n", game->sprites->moves);
 	return (0);
 }
 
 int	ft_move(int key, t_game *game)
 {
-	if ((key == KEY_A || key == KEY_LEFT) &&
-		(game->map[game->sprites->check_x][game->sprites->check_y - 1] != '1'))
+	if ((key == KEY_A || key == KEY_LEFT)
+		&& (game->map[game->sprites->s_x][game->sprites->s_y - 1] != '1'))
 		swap_images(0, -1, game);
 	return (0);
 }
 
 void	game_init(t_game *game, char **map, char *file)
 {
-	t_map	data;
-	t_player sprit;
+	t_map		data;
+	t_player	sprit;
 
 	init_struct(&data);
 	init_player_struct(game, &sprit, map, file);
@@ -80,8 +81,8 @@ void	game_init(t_game *game, char **map, char *file)
 		data.x = 0;
 		while (data.x < game->sprites->max_x)
 		{
-			mlx_put_image_to_window(game->mlx, game->window, game->sprites->roof, \
-				data.x * 50, data.y * 50);
+			mlx_put_image_to_window(game->mlx, game->window, \
+				game->sprites->roof, data.x * 50, data.y * 50);
 			if (map[data.y][data.x] == '1')
 				mlx_put_image_to_window(game->mlx, game->window, \
 				game->sprites->walls, data.x * 50, data.y * 50);

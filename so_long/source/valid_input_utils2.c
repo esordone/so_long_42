@@ -62,7 +62,6 @@ void	init_struct(t_map *data)
 	data->start = 'P';
 	data->x = 0;
 	data->y = 0;
-
 }
 
 int	num_lines_split(char *map)

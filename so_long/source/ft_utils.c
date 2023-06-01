@@ -12,7 +12,7 @@
 
 #include "../so_long.h"
 
-int	finish_program (t_game *game)
+int	finish_program(t_game *game)
 {
 	if (game)
 		mlx_destroy_window (game->window, game->window);
@@ -20,9 +20,9 @@ int	finish_program (t_game *game)
 	return (0);
 }
 
-int read_keys(int exit_key, void *data)
+int	read_keys(int exit_key, void *data)
 {
-	t_game *game;
+	t_game	*game;
 
 	game = (t_game *)data;
 	if (exit_key == ESC || !game)
@@ -30,7 +30,8 @@ int read_keys(int exit_key, void *data)
 	return (0);
 }
 
-void init_player_struct(t_game *game, t_player *sprit, char **map, char *file)
+void	init_player_struct(t_game *game, t_player *sprit, \
+char **map, char *file)
 {
 	sprit->maula = NULL;
 	sprit->roof = NULL;
@@ -38,8 +39,7 @@ void init_player_struct(t_game *game, t_player *sprit, char **map, char *file)
 	sprit->coll = NULL;
 	sprit->exit = NULL;
 	sprit->moves = 0;
-	sprit->check_x = 0;
-	sprit->check_y = 0;
+	sprit->collect = 0;
 	map = read_map(file);
 	if (!map)
 		return ;
@@ -50,7 +50,7 @@ void init_player_struct(t_game *game, t_player *sprit, char **map, char *file)
 
 int	move_things(int key, t_game *game)
 {
-	if (key == 53)
+	if (key == ESC)
 		finish_program(game);
 	else
 		ft_move(key, game);
