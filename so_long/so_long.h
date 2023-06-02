@@ -44,15 +44,6 @@ typedef struct s_map
 	int		y;
 }			t_map;
 
-/*typedef struct s_keypress
-{
-    t_map   type;
-    struct s_keypress   *up;
-    struct s_keypress   *down;
-    struct s_keypress   *left;
-    struct s_keypress   *right;
-}   t_keypress;*/
-
 //player
 typedef struct s_player
 {
@@ -72,10 +63,11 @@ typedef struct s_game
 {
 	void			*mlx;
 	void			*window;
-	void			*size;
+	int 			size;
+	void			*new_img;
     char            **map;
     t_player       *sprites;
-    //t_keypress     **move;
+    void            **destroyer;
 }					t_game;
 
 int		so_long(int argc, char **argv);

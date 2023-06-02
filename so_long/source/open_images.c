@@ -12,6 +12,7 @@
 
 #include "../so_long.h"
 
+
 void	init_sprites(t_game *game)
 {
 	int	img_size;
@@ -31,40 +32,6 @@ void	init_sprites(t_game *game)
 		!game->sprites->exit)
 		ft_printf("ERROR\nCould not open images");
 }
-
-void	clear_sprites(t_game *game)
-{
-	init_sprites(game);
-	while (game->sprites->maula)
-		mlx_destroy_image(game->mlx, game->sprites->maula);
-	while (game->sprites->walls)
-		mlx_destroy_image(game->mlx, game->sprites->walls);
-	while (game->sprites->coll)
-		mlx_destroy_image(game->mlx, game->sprites->coll);
-	while (game->sprites->exit)
-		mlx_destroy_image(game->mlx, game->sprites->exit);
-	while (game->sprites->roof)
-		mlx_destroy_image(game->mlx, game->sprites->roof);
-}
-
-void	*swap_images(int x, int y, t_game *game)
-{
-	if (x == y)
-		printf("jejjejejeej\n");
-	clear_sprites(game);
-	mlx_clear_window(game->mlx, game->window);
-	ft_printf("moves:%d\n", game->sprites->moves);
-	return (0);
-}
-
-int	ft_move(int key, t_game *game)
-{
-	if ((key == KEY_A || key == KEY_LEFT)
-		&& (game->map[game->sprites->s_x][game->sprites->s_y - 1] != '1'))
-		swap_images(0, -1, game);
-	return (0);
-}
-
 void	game_init(t_game *game, char **map, char *file)
 {
 	t_map		data;
@@ -81,22 +48,62 @@ void	game_init(t_game *game, char **map, char *file)
 		data.x = 0;
 		while (data.x < game->sprites->max_x)
 		{
+			game->new_img = game->sprites->roof;
+			if (map[data.y][data.x] == '1')
+				game->new_img = game->sprites->walls;
+			if (map[data.y][data.x] == 'C')
+				game->new_img = game->sprites->coll;
+			if (map[data.y][data.x] == 'P')
+				game->new_img = game->sprites->maula;
+			if (map[data.y][data.x] == 'E')
+				game->new_img = game->sprites->exit;
 			mlx_put_image_to_window(game->mlx, game->window, \
 				game->sprites->roof, data.x * 50, data.y * 50);
-			if (map[data.y][data.x] == '1')
-				mlx_put_image_to_window(game->mlx, game->window, \
-				game->sprites->walls, data.x * 50, data.y * 50);
-			if (map[data.y][data.x] == 'C')
-				mlx_put_image_to_window(game->mlx, game->window, \
-				game->sprites->coll, data.x * 50, data.y * 50);
-			if (map[data.y][data.x] == 'P')
-				mlx_put_image_to_window(game->mlx, game->window, \
-				game->sprites->maula, data.x * 50, data.y * 50);
-			if (map[data.y][data.x] == 'E')
-				mlx_put_image_to_window(game->mlx, game->window, \
-				game->sprites->exit, data.x * 50, data.y * 50);
+			mlx_put_image_to_window(game->mlx, game->window, \
+				game->new_img, data.x * 50, data.y * 50);
 			data.x++;
 		}
 		data.y++;
 	}
+}
+
+void	clear_sprites(t_game *game)
+{
+	int	i;
+
+	i = 0;
+	while (i < game->size)
+	{
+		//mlx_destroy_image(game->mlx, game->destroyer[i]);
+		mlx_clear_window(game->mlx, game->window);
+		i++;
+	}
+}
+
+void	*swap_images(int x, int y, t_game *game)
+{
+	if (x < 0)
+		printf("LEFT\n");
+	if (x > 0)
+		printf("RIGHT\n");
+	if (y < 0)
+		printf("DOWN\n");
+	if (y > 0)
+		printf("UP\n");
+	clear_sprites(game);
+	mlx_clear_window(game->mlx, game->window);
+	ft_printf("moves:%d\n", game->sprites->moves);
+	return (0);
+}
+
+int	ft_move(int key, t_game *game)
+{
+	int x;
+	int y;
+
+	x = 0;
+	y = 0;
+	if ((key == KEY_A || key == KEY_LEFT))
+		swap_images(x - 1, y, game);
+	return (0);
 }

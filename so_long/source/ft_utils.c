@@ -10,12 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 #include "../so_long.h"
 
 int	finish_program(t_game *game)
 {
 	if (game)
-		mlx_destroy_window (game->window, game->window);
+		mlx_destroy_window (game->mlx, game->window);
 	exit (0);
 	return (0);
 }
@@ -45,12 +46,19 @@ char **map, char *file)
 		return ;
 	sprit->max_x = ft_strlen(map[0]);
 	sprit->max_y = num_lines_split(file);
+	game->size = sprit->max_x * sprit->max_y;
+	game->destroyer = calloc(sizeof(void *), game->size);
+	if (!game->destroyer)
+	{
+		free (game->destroyer);
+		return ;
+	}
 	game->sprites = sprit;
 }
 
 int	move_things(int key, t_game *game)
 {
-	if (key == ESC)
+	if (key == 53)
 		finish_program(game);
 	else
 		ft_move(key, game);
