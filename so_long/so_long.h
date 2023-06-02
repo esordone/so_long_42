@@ -47,17 +47,16 @@ typedef struct s_map
 //player
 typedef struct s_player
 {
-    void    *maula;
-    void    *walls;
-    void    *coll;
-    void    *exit;
-    void    *roof;
+	void	*maula;
+	void	*walls;
+	void	*coll;
+	void	*exit;
+	void	*roof;
 	int		mx;
 	int		my;
-    int max_x;
-    int max_y;
-    int moves;
-    int collect;
+	int		max_x;
+	int		max_y;
+	int		collect;
 }	t_player;
 
 //game
@@ -65,11 +64,13 @@ typedef struct s_game
 {
 	void			*mlx;
 	void			*window;
-	int 			size;
+	int				size;
+	int				moves;
+	int				num_c;
 	void			*new_img;
-    char            **map;
-    t_player       *sprites;
-    void            **destroyer;
+	char			**map;
+	t_player		*sprites;
+	void			**destroyer;
 }					t_game;
 
 int		so_long(int argc, char **argv);
@@ -78,17 +79,19 @@ void	open_images(t_game *game);
 void	*put_images(t_game *game, int x, int y);
 
 //utils
-void init_player_struct(t_game *game, t_player *sprit, char **map, char *file);
-int	finish_program (t_game *game);
-int read_keys(int exit_key, void *data);
-int	move_things(int key, t_game *game);
-void	where_maula(t_game *game, char **map, char *file);
+void	init_player_struct(t_game *game, t_player *sprit, \
+char **map, char *file);
+int		finish_program(t_game *game);
+int		read_keys(int exit_key, void *data);
+int		move_things(int key, t_game *game);
+void	where_maula(t_game *game);
+void	num_collect(t_game *game);
 
 //mlx
-int	finish_program (t_game *game);
-int read_keys(int exit_key, void *data);
+int		finish_program(t_game *game);
+int		read_keys(int exit_key, void *data);
 void	clear_sprites(t_game *game);
-int	ft_move(int key, t_game *game);
+int		ft_move(int key, t_game *game);
 void	*swap_images(int x, int y, t_game *game);
 
 //valid_input
@@ -101,20 +104,20 @@ void	init_sprites(t_game *game);
 //valid_input_utils
 int		walls_map(char **map, char *file);
 int		rectangular_map(char **map, char *file);
-int	check_last_line_map(char **map, char *file, char object);
-int	exit_on_map(char **map, char *file);
-int	start_on_map(char **map, char *file);
+int		check_last_line_map(char **map, char *file, char object);
+int		exit_on_map(char **map, char *file);
+int		start_on_map(char **map, char *file);
 
 //valid_input_utils2
 int		ft_strrncmp(char *s1, char *s2, int n);
 char	**read_map(char *map);
 void	init_struct(t_map *data);
 int		num_lines_split(char *map);
-int 	is_in_map(char *map, char object, int len);
+int		is_in_map(char *map, char object, int len);
 
 //valid_input_utils3
-int	object_on_map(char **map, char *file);
-int	is_double_in_map(char *map, char object, int len);
-int	check_doubles(char **map, char *file, char object);
+int		object_on_map(char **map, char *file);
+int		is_double_in_map(char *map, char object, int len);
+int		check_doubles(char **map, char *file, char object);
 
 #endif

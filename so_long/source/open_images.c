@@ -12,7 +12,6 @@
 
 #include "../so_long.h"
 
-
 void	init_sprites(t_game *game)
 {
 	int	img_size;
@@ -65,7 +64,6 @@ void	game_init(t_game *game, char **map, char *file)
 		}
 		data.y++;
 	}
-	where_maula(game, map, file);
 }
 
 void	clear_sprites(t_game *game)
@@ -75,7 +73,6 @@ void	clear_sprites(t_game *game)
 	i = 0;
 	while (i < game->size)
 	{
-		//mlx_destroy_image(game->mlx, game->destroyer[i]);
 		mlx_clear_window(game->mlx, game->window);
 		i++;
 	}
@@ -83,23 +80,18 @@ void	clear_sprites(t_game *game)
 
 void	*swap_images(int x, int y, t_game *game)
 {
-	if (x < 0)
-		printf("LEFT\n");
-	if (x > 0)
-		printf("RIGHT\n");
-	if (y < 0)
-		printf("DOWN\n");
-	if (y > 0)
-		printf("UP\n");
+	if (x == y)
+		printf("jejejeej\n");
 	clear_sprites(game);
 	mlx_clear_window(game->mlx, game->window);
-	ft_printf("moves:%d\n", game->sprites->moves);
+	game->moves++;
+	ft_printf("moves:%d\n", game->moves);
 	return (0);
 }
 
 int	ft_move(int key, t_game *game)
 {
-	where_maula(game, argv, argv[1]);
+	where_maula(game);
 	if ((key == KEY_A || key == KEY_LEFT))
 		swap_images(game->sprites->mx - 1, game->sprites->my, game);
 	if ((key == KEY_D || key == KEY_RIGHT))

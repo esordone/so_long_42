@@ -39,7 +39,6 @@ char **map, char *file)
 	sprit->walls = NULL;
 	sprit->coll = NULL;
 	sprit->exit = NULL;
-	sprit->moves = 0;
 	sprit->collect = 0;
 	map = read_map(file);
 	if (!map)
@@ -47,6 +46,7 @@ char **map, char *file)
 	sprit->max_x = ft_strlen(map[0]);
 	sprit->max_y = num_lines_split(file);
 	game->size = sprit->max_x * sprit->max_y;
+	game->moves = 0;
 	game->destroyer = calloc(sizeof(void *), game->size);
 	if (!game->destroyer)
 	{
