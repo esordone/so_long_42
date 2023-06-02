@@ -52,6 +52,8 @@ typedef struct s_player
     void    *coll;
     void    *exit;
     void    *roof;
+	int		mx;
+	int		my;
     int max_x;
     int max_y;
     int moves;
@@ -80,6 +82,7 @@ void init_player_struct(t_game *game, t_player *sprit, char **map, char *file);
 int	finish_program (t_game *game);
 int read_keys(int exit_key, void *data);
 int	move_things(int key, t_game *game);
+void	where_maula(t_game *game, char **map, char *file);
 
 //mlx
 int	finish_program (t_game *game);

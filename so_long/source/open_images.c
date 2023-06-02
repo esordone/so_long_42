@@ -65,6 +65,7 @@ void	game_init(t_game *game, char **map, char *file)
 		}
 		data.y++;
 	}
+	where_maula(game, map, file);
 }
 
 void	clear_sprites(t_game *game)
@@ -98,12 +99,14 @@ void	*swap_images(int x, int y, t_game *game)
 
 int	ft_move(int key, t_game *game)
 {
-	int x;
-	int y;
-
-	x = 0;
-	y = 0;
+	where_maula(game, argv, argv[1]);
 	if ((key == KEY_A || key == KEY_LEFT))
-		swap_images(x - 1, y, game);
+		swap_images(game->sprites->mx - 1, game->sprites->my, game);
+	if ((key == KEY_D || key == KEY_RIGHT))
+		swap_images(game->sprites->mx + 1, game->sprites->my, game);
+	if ((key == KEY_S || key == KEY_DOWN))
+		swap_images(game->sprites->mx, game->sprites->my - 1, game);
+	if ((key == KEY_W || key == KEY_UP))
+		swap_images(game->sprites->mx, game->sprites->my + 1, game);
 	return (0);
 }
