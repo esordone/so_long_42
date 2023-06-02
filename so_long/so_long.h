@@ -67,7 +67,6 @@ typedef struct s_game
 	int					size;
 	int					moves;
 	int					num_c;
-	void				*new_img;
 	char				**map;
 	struct s_player		sprites;
 }						t_game;
@@ -78,7 +77,7 @@ void	open_images(t_game *game);
 void	*put_images(t_game *game, int x, int y);
 
 //utils
-void	init_player_struct(t_game *game, t_player *sprit, \
+void	init_player_struct(t_game *game, t_player *sprites, \
 char **map, char *file);
 int		finish_program(t_game *game);
 int		move_things(int key, t_game *game);

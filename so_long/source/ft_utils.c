@@ -44,7 +44,6 @@ char **map, char *file)
 	sprites->max_y = num_lines_split(file);
 	game->size = sprites->max_x * sprites->max_y;
 	game->moves = 0;
-	//game->sprites = sprit;
 }
 
 int	move_things(int key, t_game *game)

@@ -31,9 +31,11 @@ void	init_sprites(t_game *game)
 		!game->sprites.exit)
 		ft_printf("ERROR\nCould not open images");
 }
+
 void	game_init(t_game *game, char **map, char *file)
 {
 	t_map		data;
+	void		*new_img;
 
 	init_struct(&data);
 	init_player_struct(game, &game->sprites, map, file);
@@ -43,19 +45,19 @@ void	game_init(t_game *game, char **map, char *file)
 		data.x = 0;
 		while (data.x < game->sprites.max_x)
 		{
-			game->new_img = game->sprites.roof;
+			new_img = game->sprites.roof;
 			if (game->map[data.y][data.x] == '1')
-				game->new_img = game->sprites.walls;
+				new_img = game->sprites.walls;
 			if (game->map[data.y][data.x] == 'C')
-				game->new_img = game->sprites.coll;
+				new_img = game->sprites.coll;
 			if (game->map[data.y][data.x] == 'P')
-				game->new_img = game->sprites.maula;
+				new_img = game->sprites.maula;
 			if (game->map[data.y][data.x] == 'E')
-				game->new_img = game->sprites.exit;
+				new_img = game->sprites.exit;
 			mlx_put_image_to_window(game->mlx, game->window, \
-				game->sprites.roof, data.x * 50, data.y * 50);
+			game->sprites.roof, data.x * 50, data.y * 50);
 			mlx_put_image_to_window(game->mlx, game->window, \
-				game->new_img, data.x * 50, data.y * 50);
+			new_img, data.x * 50, data.y * 50);
 			data.x++;
 		}
 		data.y++;
