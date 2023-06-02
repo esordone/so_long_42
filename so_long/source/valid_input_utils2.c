@@ -71,6 +71,8 @@ int	num_lines_split(char *map)
 
 	i = 0;
 	res = read_map(map);
+	if (!res)
+		return (0);
 	while (res[i] != NULL)
 		i++;
 	return (i);

@@ -14,14 +14,14 @@
 
 void	where_maula(t_game *game)
 {
-	int			x;
-	int			y;
+	int		x;
+	int		y;
 
 	y = 0;
-	while (y < game->sprites->max_y)
+	while (y < game->sprites.max_y)
 	{
 		x = 0;
-		while (x < game->sprites->max_x)
+		while (x < game->sprites.max_x)
 		{
 			if (game->map[y][x] == 'P')
 				break ;
@@ -31,8 +31,8 @@ void	where_maula(t_game *game)
 			break ;
 		y++;
 	}
-	game->sprites->mx = x;
-	game->sprites->my = y;
+	game->sprites.mx = x;
+	game->sprites.my = y;
 }
 
 void	num_collect(t_game *game)
@@ -43,16 +43,16 @@ void	num_collect(t_game *game)
 
 	res = 0;
 	y = 0;
-	while (y < game->sprites->max_y)
+	while (y < game->sprites.max_y)
 	{
 		x = 0;
-		while (x < game->sprites->max_x)
+		while (x < game->sprites.max_x)
 		{
-			if (game->map[y][x] == 'P')
+			if (game->map[y][x] == 'C')
 				res++;
 			x++;
 		}
-		if (game->map[y][x] == 'P')
+		if (game->map[y][x] == 'C')
 			res++;
 		y++;
 	}

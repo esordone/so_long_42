@@ -21,39 +21,30 @@ int	finish_program(t_game *game)
 	return (0);
 }
 
-int	read_keys(int exit_key, void *data)
+int	read_keys(int exit_key, t_game *data)
 {
-	t_game	*game;
-
-	game = (t_game *)data;
-	if (exit_key == ESC || !game)
-		finish_program(game->window);
+	if (exit_key == ESC || !data)
+		finish_program(data->window);
 	return (0);
 }
 
-void	init_player_struct(t_game *game, t_player *sprit, \
+void	init_player_struct(t_game *game, t_player *sprites, \
 char **map, char *file)
 {
-	sprit->maula = NULL;
-	sprit->roof = NULL;
-	sprit->walls = NULL;
-	sprit->coll = NULL;
-	sprit->exit = NULL;
-	sprit->collect = 0;
-	map = read_map(file);
+	sprites->maula = NULL;
+	sprites->roof = NULL;
+	sprites->walls = NULL;
+	sprites->coll = NULL;
+	sprites->exit = NULL;
+	sprites->collect = 0;
+	game->map = read_map(file);
 	if (!map)
 		return ;
-	sprit->max_x = ft_strlen(map[0]);
-	sprit->max_y = num_lines_split(file);
-	game->size = sprit->max_x * sprit->max_y;
+	sprites->max_x = ft_strlen(map[0]);
+	sprites->max_y = num_lines_split(file);
+	game->size = sprites->max_x * sprites->max_y;
 	game->moves = 0;
-	game->destroyer = calloc(sizeof(void *), game->size);
-	if (!game->destroyer)
-	{
-		free (game->destroyer);
-		return ;
-	}
-	game->sprites = sprit;
+	//game->sprites = sprit;
 }
 
 int	move_things(int key, t_game *game)

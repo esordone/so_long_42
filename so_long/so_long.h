@@ -62,16 +62,15 @@ typedef struct s_player
 //game
 typedef struct s_game
 {
-	void			*mlx;
-	void			*window;
-	int				size;
-	int				moves;
-	int				num_c;
-	void			*new_img;
-	char			**map;
-	t_player		*sprites;
-	void			**destroyer;
-}					t_game;
+	void				*mlx;
+	void				*window;
+	int					size;
+	int					moves;
+	int					num_c;
+	void				*new_img;
+	char				**map;
+	struct s_player		sprites;
+}						t_game;
 
 int		so_long(int argc, char **argv);
 int		num_lines(char *map, int fd);
@@ -82,14 +81,13 @@ void	*put_images(t_game *game, int x, int y);
 void	init_player_struct(t_game *game, t_player *sprit, \
 char **map, char *file);
 int		finish_program(t_game *game);
-int		read_keys(int exit_key, void *data);
 int		move_things(int key, t_game *game);
 void	where_maula(t_game *game);
 void	num_collect(t_game *game);
 
 //mlx
 int		finish_program(t_game *game);
-int		read_keys(int exit_key, void *data);
+int		read_keys(int exit_key, t_game *data);
 void	clear_sprites(t_game *game);
 int		ft_move(int key, t_game *game);
 void	*swap_images(int x, int y, t_game *game);
