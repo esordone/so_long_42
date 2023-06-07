@@ -47,7 +47,7 @@ PRINT = ft_printf
 
 CC = gcc
 
-FLAGS = -Wall -Werror -Wextra
+FLAGS = -Wall -Werror -Wextra -g
 
 CLEAN = rm -rf
 

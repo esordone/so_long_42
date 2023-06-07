@@ -71,120 +71,63 @@ void	clear_sprites(t_game *game)
 	i = 0;
 	while (game->images[i])
 	{
-		printf("moco\n");
 		mlx_destroy_image(game->mlx, game->images[i]);
-		printf("mocosss\n");
 		i++;
 	}
 }
 
 void	*swap_images(int x, int y, t_game *game)
 {
+	num_collect(game);
 	clear_sprites(game);
 	mlx_clear_window(game->mlx, game->window);
-	printf("1\n");
-	if (game->map[game->sprites.mx + x][game->sprites.my + y] == 'C')
-	{
-			game->sprites.collect--;
-			printf("2\n");
-	}
-	if (game->map[game->sprites.mx + x][game->sprites.my + y] == 'E'
-		&& game->sprites.collect == 0)
-	{
-		printf("3\n");
+	printf("num collectionables = %d\n", game->num_c);
+	if (game->map[game->sprites.my + y][game->sprites.mx + x] == 'C')
+			game->num_c--;
+	if (game->map[game->sprites.my + y][game->sprites.mx + x] == 'E'
+		&& game->num_c == 0)
 		finish_program(game);
-	}
-	if (game->map[game->sprites.mx + x][game->sprites.my + y] == 'E'
+	if (game->map[game->sprites.my + y][game->sprites.mx + x] == 'E'
 		&& game->sprites.collect > 0)
 	{
-		printf("4\n");
 		make_map(game);
-		printf("5\n");
 		return (0);
 	}
-	game->map[game->sprites.mx + x][game->sprites.my + y] = 'P';
-	printf("6\n");
-	game->map[game->sprites.mx][game->sprites.my] = '0';
-	printf("7\n");
+	game->map[game->sprites.my + y][game->sprites.mx + x] = 'P';
+	game->map[game->sprites.my][game->sprites.mx] = '0';
 	game->images = save_image(game);
-	printf("8\n");
 	game->moves++;
 	ft_printf("moves:%d\n", game->moves);
 	make_map(game);
-	printf("9\n");
 	return (0);
 }
 
 int	ft_move(int key, t_game *game)
 {
 	where_maula(game);
-	printf("jejejejej\n");
-	if ((key == KEY_A || key == KEY_LEFT))
-	{
-		printf("move left\n");
-		swap_images(0, -1, game);
-	}
-	if ((key == KEY_D || key == KEY_RIGHT))
-	{
-		printf("move right\n");
-		swap_images(0, +1, game);
-	}
-	if ((key == KEY_S || key == KEY_DOWN))
-	{
-		printf("move down\n");
-		swap_images(-1, 0, game);
-	}
-	if ((key == KEY_W || key == KEY_UP))
-	{
-		printf("move up\n");
-		swap_images(+1, 0, game);
-	}
-	return (0);
-}
-
-
-/*int	ft_move(int key, t_game *game)
-{
-	where_maula(game);
-	num_collect(game);
-	if ((key == KEY_A || key == KEY_LEFT))
-		swap_images(game->sprites.mx - 1, game->sprites.my, game);
-	if ((key == KEY_D || key == KEY_RIGHT))
-		swap_images(game->sprites.mx + 1, game->sprites.my, game);
-	if ((key == KEY_S || key == KEY_DOWN))
-		swap_images(game->sprites.mx, game->sprites.my - 1, game);
-	if ((key == KEY_W || key == KEY_UP))
-		swap_images(game->sprites.mx, game->sprites.my + 1, game);
-	return (0);
-}*/
-
-/*int	ft_move(int key, t_game *game)
-{
-	where_maula(game);
-	printf("jejejejej\n");
 	if ((key == KEY_A || key == KEY_LEFT)
-		&& game->map[game->sprites.mx - 1][game->sprites.my] != '1')
+		&& game->map[game->sprites.my][game->sprites.mx - 1] != '1')
 	{
 		printf("move left\n");
 		swap_images(-1, 0, game);
 	}
 	if ((key == KEY_D || key == KEY_RIGHT)
-		&& game->map[game->sprites.mx + 1][game->sprites.my] != '1')
+		&& game->map[game->sprites.my][game->sprites.mx + 1] != '1')
 	{
 		printf("move right\n");
 		swap_images(+1, 0, game);
 	}
 	if ((key == KEY_S || key == KEY_DOWN)
-		&& game->map[game->sprites.mx][game->sprites.my - 1] != '1')
+		&& game->map[game->sprites.my + 1][game->sprites.mx] != '1')
 	{
 		printf("move down\n");
-		swap_images(0, -1, game);
-	}
-	if ((key == KEY_W || key == KEY_UP)
-		&& game->map[game->sprites.mx][game->sprites.my + 1] != '1')
-	{
-		printf("move up\n");
 		swap_images(0, +1, game);
 	}
+	if ((key == KEY_W || key == KEY_UP)
+		&& game->map[game->sprites.my - 1][game->sprites.mx] != '1')
+	{
+		printf("move up\n");
+		swap_images(0, -1, game);
+	}
 	return (0);
-}*/
+}

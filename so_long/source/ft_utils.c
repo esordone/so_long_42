@@ -36,7 +36,6 @@ char **map, char *file)
 	sprites->walls = NULL;
 	sprites->coll = NULL;
 	sprites->exit = NULL;
-	sprites->collect = num_collect(game);
 	game->map = read_map(file);
 	if (!map)
 		return ;

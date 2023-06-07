@@ -31,7 +31,7 @@ int	num_lines(char *map, int fd)
 	return (num_lines);
 }
 
-void	window(char **argv, t_game *size)
+void	window(char **argv, t_game *game)
 {
 	int		width;
 	int		fd;
@@ -49,8 +49,8 @@ void	window(char **argv, t_game *size)
 		free(map);
 	width = (ft_strlen(map) - 1) * IMG_SIZE;
 	high = (num_lines(map, fd) - 1) * IMG_SIZE;
-	size->mlx = mlx_init();
-	size->window = mlx_new_window(size->mlx, width,
+	game->mlx = mlx_init();
+	game->window = mlx_new_window(game->mlx, width,
 			high, "**** QUARANTAMAULA ****");
 	close(fd);
 }

@@ -84,7 +84,7 @@ char **map, char *file);
 int		finish_program(t_game *game);
 int		move_things(int key, t_game *game);
 void	where_maula(t_game *game);
-int		num_collect(t_game *game);
+void	num_collect(t_game *game);
 void	make_map(t_game *game);
 void	*ft_images(t_game *game, char *image);
 void	*put_images(t_game *game, int x, int y);

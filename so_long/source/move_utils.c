@@ -35,7 +35,7 @@ void	where_maula(t_game *game)
 	game->sprites.my = y;
 }
 
-int	num_collect(t_game *game)
+void	num_collect(t_game *game)
 {
 	int	x;
 	int	y;
@@ -57,7 +57,6 @@ int	num_collect(t_game *game)
 		y++;
 	}
 	game->num_c = res;
-	return (res);
 }
 
 void	make_map(t_game *game)
@@ -67,19 +66,20 @@ void	make_map(t_game *game)
 
 	n = 0;
 	init_struct(&data);
-	while (data.y < game->sprites.max_y)
+	while (game->map[data.x])
 	{
-		data.x = 0;
-		while (data.x < game->sprites.max_x)
+		data.y = 0;
+		while (game->map[data.x][data.y] && game->map[data.x][data.y] != '\n')
 		{
 			game->images[n] = put_images(game, data.x, data.y);
 			if (game->images[n] == NULL)
 				exit (0);
 			mlx_put_image_to_window(game->mlx, game->window,
-				game->images[n++], data.x * 50, data.y * 50);
-			data.x++;
+				game->images[n], data.y * 50, data.x * 50);
+			n++;
+			data.y++;
 		}
-		data.y++;
+		data.x++;
 	}
 }
 
