@@ -65,9 +65,11 @@ typedef struct s_game
 	void				*mlx;
 	void				*window;
 	int					size;
+	void				**images;
 	int					moves;
 	int					num_c;
 	char				**map;
+
 	struct s_player		sprites;
 }						t_game;
 
@@ -82,7 +84,11 @@ char **map, char *file);
 int		finish_program(t_game *game);
 int		move_things(int key, t_game *game);
 void	where_maula(t_game *game);
-void	num_collect(t_game *game);
+int		num_collect(t_game *game);
+void	make_map(t_game *game);
+void	*ft_images(t_game *game, char *image);
+void	*put_images(t_game *game, int x, int y);
+void	**save_image(t_game *game);
 
 //mlx
 int		finish_program(t_game *game);

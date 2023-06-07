@@ -36,13 +36,16 @@ char **map, char *file)
 	sprites->walls = NULL;
 	sprites->coll = NULL;
 	sprites->exit = NULL;
-	sprites->collect = 0;
+	sprites->collect = num_collect(game);
 	game->map = read_map(file);
 	if (!map)
 		return ;
 	sprites->max_x = ft_strlen(map[0]);
 	sprites->max_y = num_lines_split(file);
 	game->size = sprites->max_x * sprites->max_y;
+	game->images = calloc (sizeof(void *), game->size);
+	if (!game->images)
+		return ;
 	game->moves = 0;
 }
 
@@ -53,4 +56,12 @@ int	move_things(int key, t_game *game)
 	else
 		ft_move(key, game);
 	return (0);
+}
+
+void	**save_image(t_game *game)
+{
+	game->images = calloc(sizeof(void *), (game->size));
+	if (!game->images)
+		return (0);
+	return (game->images);
 }
