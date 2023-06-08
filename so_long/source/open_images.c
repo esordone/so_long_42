@@ -45,7 +45,6 @@ void	clear_sprites(t_game *game)
 	int	i;
 
 	i = 0;
-	//fa segmenttion fault
 	while (game->images[i])
 	{
 		mlx_destroy_image(game->mlx, game->images[i]);
@@ -56,7 +55,7 @@ void	clear_sprites(t_game *game)
 void	*swap_images(int x, int y, t_game *game)
 {
 	num_collect(game);
-	//clear_sprites(game);
+	clear_sprites(game);
 	mlx_clear_window(game->mlx, game->window);
 	if (game->map[game->sprites.my + y][game->sprites.mx + x] == 'C')
 			game->num_c--;

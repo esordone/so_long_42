@@ -46,6 +46,8 @@ char	**read_map(char *map)
 		exit (0);
 	}
 	buffer = ft_calloc(sizeof(char), BUFFER_SIZE);
+	if (!buffer)
+		return (0);
 	read(fd, buffer, BUFFER_SIZE);
 	res = ft_split(buffer, '\n');
 	free (buffer);
