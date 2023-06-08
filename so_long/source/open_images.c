@@ -64,6 +64,12 @@ void	*swap_images(int x, int y, t_game *game)
 	if (game->map[game->sprites.my + y][game->sprites.mx + x] == 'E'
 		&& game->num_c == 0)
 		finish_program(game);
+	if (game->map[game->sprites.my + y][game->sprites.mx + x] == 'E'
+		&& game->num_c > 0)
+	{
+		make_map(game);
+		return (0);
+	}
 	game->map[game->sprites.my + y][game->sprites.mx + x] = 'P';
 	game->map[game->sprites.my][game->sprites.mx] = '0';
 	game->images = save_image(game);
@@ -78,27 +84,15 @@ int	ft_move(int key, t_game *game)
 	where_maula(game);
 	if ((key == KEY_A || key == KEY_LEFT)
 		&& game->map[game->sprites.my][game->sprites.mx - 1] != '1')
-	{
-		printf("move left\n");
 		swap_images(-1, 0, game);
-	}
 	if ((key == KEY_D || key == KEY_RIGHT)
 		&& game->map[game->sprites.my][game->sprites.mx + 1] != '1')
-	{
-		printf("move right\n");
 		swap_images(+1, 0, game);
-	}
 	if ((key == KEY_S || key == KEY_DOWN)
 		&& game->map[game->sprites.my + 1][game->sprites.mx] != '1')
-	{
-		printf("move down\n");
 		swap_images(0, +1, game);
-	}
 	if ((key == KEY_W || key == KEY_UP)
 		&& game->map[game->sprites.my - 1][game->sprites.mx] != '1')
-	{
-		printf("move up\n");
 		swap_images(0, -1, game);
-	}
 	return (0);
 }
