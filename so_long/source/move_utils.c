@@ -75,6 +75,8 @@ void	make_map(t_game *game)
 			if (game->images[n] == NULL)
 				exit (0);
 			mlx_put_image_to_window(game->mlx, game->window,
+				game->sprites.roof, data.y * 50, data.x * 50);
+			mlx_put_image_to_window(game->mlx, game->window,
 				game->images[n], data.y * 50, data.x * 50);
 			n++;
 			data.y++;

@@ -58,7 +58,6 @@ void	*swap_images(int x, int y, t_game *game)
 	num_collect(game);
 	//clear_sprites(game);
 	mlx_clear_window(game->mlx, game->window);
-	printf("num collectionables = %d\n", game->num_c);
 	if (game->map[game->sprites.my + y][game->sprites.mx + x] == 'C')
 			game->num_c--;
 	if (game->map[game->sprites.my + y][game->sprites.mx + x] == 'E'

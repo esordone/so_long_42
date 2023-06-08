@@ -70,13 +70,8 @@ int	main(int argc, char **argv)
 		if (valid_input(argv, argv[1]) == 1)
 		{
 			game.map = read_map(argv[1]);
-			if (!game.map)
-				return (0);
 			game.sprites.max_y = num_lines_split(argv[1]);
 			game_init(&game);
-			game.images = calloc(sizeof(void *), game.size);
-			if (!game.images)
-				return (0);
 			window(argv, &game);
 			make_map(&game);
 			mlx_key_hook (game.window, read_keys, &game);

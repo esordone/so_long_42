@@ -30,10 +30,12 @@ int	read_keys(int exit_key, t_game *data)
 
 void	init_player_struct(t_game *game, t_player *sprites)
 {
-
 	sprites->max_x = ft_strlen(*game->map);
 	game->size = sprites->max_x * sprites->max_y;
 	game->moves = 0;
+	game->images = calloc(sizeof(void *), game->size);
+	if (!game->images)
+		return ;
 }
 
 int	move_things(int key, t_game *game)
