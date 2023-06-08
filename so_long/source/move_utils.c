@@ -95,6 +95,7 @@ void	*ft_images(t_game *game, char *image)
 
 void	*put_images(t_game *game, int x, int y)
 {
+	init_sprites(game);
 	if (game->map[x][y] == '1')
 		return (ft_images(game, "images/xpm/Wall.xpm"));
 	if (game->map[x][y] == '0')

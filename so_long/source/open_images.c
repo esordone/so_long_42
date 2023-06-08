@@ -32,36 +32,12 @@ void	init_sprites(t_game *game)
 		ft_printf("ERROR\nCould not open images");
 }
 
-void	game_init(t_game *game, char **map, char *file)
+void	game_init(t_game *game)
 {
 	t_map		data;
-	void		*new_img;
 
 	init_struct(&data);
-	init_player_struct(game, &game->sprites, map, file);
-	init_sprites(game);
-	while (data.y < game->sprites.max_y)
-	{
-		data.x = 0;
-		while (data.x < game->sprites.max_x)
-		{
-			new_img = game->sprites.roof;
-			if (game->map[data.y][data.x] == '1')
-				new_img = game->sprites.walls;
-			if (game->map[data.y][data.x] == 'C')
-				new_img = game->sprites.coll;
-			if (game->map[data.y][data.x] == 'P')
-				new_img = game->sprites.maula;
-			if (game->map[data.y][data.x] == 'E')
-				new_img = game->sprites.exit;
-			mlx_put_image_to_window(game->mlx, game->window, \
-			game->sprites.roof, data.x * 50, data.y * 50);
-			mlx_put_image_to_window(game->mlx, game->window, \
-			new_img, data.x * 50, data.y * 50);
-			data.x++;
-		}
-		data.y++;
-	}
+	init_player_struct(game, &game->sprites);
 }
 
 void	clear_sprites(t_game *game)
@@ -69,6 +45,7 @@ void	clear_sprites(t_game *game)
 	int	i;
 
 	i = 0;
+	//fa segmenttion fault
 	while (game->images[i])
 	{
 		mlx_destroy_image(game->mlx, game->images[i]);
@@ -79,7 +56,7 @@ void	clear_sprites(t_game *game)
 void	*swap_images(int x, int y, t_game *game)
 {
 	num_collect(game);
-	clear_sprites(game);
+	//clear_sprites(game);
 	mlx_clear_window(game->mlx, game->window);
 	printf("num collectionables = %d\n", game->num_c);
 	if (game->map[game->sprites.my + y][game->sprites.mx + x] == 'C')
@@ -87,12 +64,6 @@ void	*swap_images(int x, int y, t_game *game)
 	if (game->map[game->sprites.my + y][game->sprites.mx + x] == 'E'
 		&& game->num_c == 0)
 		finish_program(game);
-	if (game->map[game->sprites.my + y][game->sprites.mx + x] == 'E'
-		&& game->sprites.collect > 0)
-	{
-		make_map(game);
-		return (0);
-	}
 	game->map[game->sprites.my + y][game->sprites.mx + x] = 'P';
 	game->map[game->sprites.my][game->sprites.mx] = '0';
 	game->images = save_image(game);

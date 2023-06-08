@@ -28,23 +28,11 @@ int	read_keys(int exit_key, t_game *data)
 	return (0);
 }
 
-void	init_player_struct(t_game *game, t_player *sprites, \
-char **map, char *file)
+void	init_player_struct(t_game *game, t_player *sprites)
 {
-	sprites->maula = NULL;
-	sprites->roof = NULL;
-	sprites->walls = NULL;
-	sprites->coll = NULL;
-	sprites->exit = NULL;
-	game->map = read_map(file);
-	if (!map)
-		return ;
-	sprites->max_x = ft_strlen(map[0]);
-	sprites->max_y = num_lines_split(file);
+
+	sprites->max_x = ft_strlen(*game->map);
 	game->size = sprites->max_x * sprites->max_y;
-	game->images = calloc (sizeof(void *), game->size);
-	if (!game->images)
-		return ;
 	game->moves = 0;
 }
 

@@ -69,7 +69,6 @@ typedef struct s_game
 	int					moves;
 	int					num_c;
 	char				**map;
-
 	struct s_player		sprites;
 }						t_game;
 
@@ -79,8 +78,7 @@ void	open_images(t_game *game);
 void	*put_images(t_game *game, int x, int y);
 
 //utils
-void	init_player_struct(t_game *game, t_player *sprites, \
-char **map, char *file);
+void	init_player_struct(t_game *game, t_player *sprites);
 int		finish_program(t_game *game);
 int		move_things(int key, t_game *game);
 void	where_maula(t_game *game);
@@ -101,7 +99,7 @@ void	*swap_images(int x, int y, t_game *game);
 int		valid_input(char **argv, char *file);
 
 //open images
-void	game_init(t_game *game, char **map, char *file);
+void	game_init(t_game *game);
 void	init_sprites(t_game *game);
 
 //valid_input_utils

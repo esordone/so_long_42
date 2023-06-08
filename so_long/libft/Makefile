@@ -42,7 +42,7 @@ RM = rm -f
 RMB = rm -f .bonus
 INCLUDE = libft.h
 CC = gcc
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -g
 OBJ = $(SRC:.c=.o)
 OBJBONUS = $(SRCSBONUS:.c=.o)
 
